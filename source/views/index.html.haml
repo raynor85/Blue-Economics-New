@@ -1,11 +1,49 @@
 ---
-title: Page Title
+title: Blue Economics
 ---
 
-.delete-me
-  .container
-    %h1 Proteus
-    %p
-      You're all set!
-      <a href="http://github.com/thoughtbot/proteus-middleman">Let's get started</a>
-      building your prototype.
+/ .delete-me
+/   .container
+/     %h1 Proteus
+/     %p
+/       You're all set!
+/       <a href="http://github.com/thoughtbot/proteus-middleman">Let's get started</a>
+/       building your prototype.
+
+
+#fullpage
+  #section0.section
+    #main-box
+      %a{:href => "#"}
+        #start-business
+          .text
+            %h1 I want to start a business.
+            %h3 Entrepreneurial advice and credit.
+  
+      %a{:href => "#"}
+        #find-job
+          .text
+            %h1 I want to find a better job.
+            %h3 Workforce Development.
+
+      %a{:href => "#"}
+        #help-business
+          .text
+            %h1 I need help with my business.
+            %h3 Small business services and credit.
+
+
+
+  #section1.section
+    %h1 
+      What industry are you interested in?
+    #industry
+      %input{:type => "text"}/
+
+  #section2.section
+    #slide1.slide{"data-anchor" => "slide1"}
+      %h1 Clickable
+      %p 
+        You can even click on the navigation and jump directly to another section.
+    #slide2.slide{"data-anchor" => "slide2"}
+      %h1 Slide 2

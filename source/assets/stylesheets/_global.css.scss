@@ -1,3 +1,174 @@
+// =============================================================================
+// VARIABLES
+// =========
+
+$orange: #F36523;
+$yellow: #EC9F45;
+$blue:   #32657E;
+$white:  #FFFFFF;
+
+
+// =============================================================================
+// PLACEHOLDERS
+// ============
+
+%vertical-align {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+%smooth-transition {
+  -webkit-transition: all .6s;
+  -moz-transition: all .6s;
+  -moz-transition: all .6s;
+  transition: all .6s;
+}
+
+
+// =============================================================================
+// MIXINS
+// ======
+
+@mixin background-image($background) {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  -webkit-transform: translateZ(0);
+     -moz-transform: translateZ(0);
+          transform: translateZ(0);
+  z-index: -1;
+  background: $background;
+  background-size: cover;
+}
+
+@mixin vertical-align {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+@mixin circle($bg-color) {
+  height: 21em;
+  width: 21em;
+  border-radius: 50%;
+  background-color: $bg-color;
+  position: absolute;
+  opacity: 0.7;
+  @extend %smooth-transition;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  .text {
+    @include vertical-align;
+    
+    h1, 
+    h3 {
+      color: $white;
+    }
+
+    h1 {
+      font-weight: bold;
+    } 
+  }
+}
+
+
+// =============================================================================
+// FRONT PAGE
+// ==========
+
+#section0 {
+  &:before {
+    @include background-image(url("../images/brooklyn.jpg") no-repeat center center fixed);
+  }
+}
+
+#main-box {
+  max-width: 35em;
+  height: 35em;
+  margin: 0 auto;
+  position: relative;
+
+  #start-business {
+    @include vertical-align;
+    @include circle($orange);
+    left: -7%;
+  }
+
+  #find-job {
+    @include vertical-align;
+    @include circle($yellow);
+    left: 38%;
+    top: 30%;
+  }
+
+  #help-business {
+    @include vertical-align;
+    @include circle($blue);
+    left: 38%;
+    top: 75%;
+  }
+}
+
+
+// =============================================================================
+// SEARCH PAGE
+// ==========
+
+#section1 {
+  &:before {
+    @include background-image(linear-gradient(180deg, $orange, $orange));
+  }
+
+  h1 {
+    font-size: 4em;
+    color: white;
+    font-weight: bold;
+  }
+
+  #industry {
+    @include outer-container;
+
+    input {
+      @include span-columns(8);
+      @include shift(2);
+
+      background: transparent;
+      border: 0;
+      border-bottom: 1px solid $white;
+
+      &:focus {
+        border: transparent;
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 body {
   background-color: $light-gray;
   color: $medium-gray;
