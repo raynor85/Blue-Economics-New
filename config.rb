@@ -10,6 +10,7 @@ set :images_dir, 'assets/images'
 set :fonts_dir, 'assets/fonts'
 set :layout, 'layouts/application'
 
+
 configure :development do
  activate :livereload
 end

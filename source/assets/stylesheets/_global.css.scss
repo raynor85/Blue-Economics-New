@@ -4,7 +4,7 @@
 
 $orange: #F36523;
 $yellow: #EC9F45;
-$blue:   #32657E;
+$blue:   #009ACC;
 $white:  #FFFFFF;
 
 
@@ -45,6 +45,13 @@ $white:  #FFFFFF;
           font-smoothing: antialiased;
 }
 
+%shadows {
+  -webkit-box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);
+     -moz-box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);
+      -ms-box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);
+       -o-box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);
+          box-shadow: 0 1px 3px rgba(34, 25, 25, 0.4);
+}
 
 // =============================================================================
 // MIXINS
@@ -59,11 +66,11 @@ $white:  #FFFFFF;
 }
 
 @mixin transformZ($value) {
-  -webkit-transform: translateY($value);
-     -moz-transform: translateY($value);
-      -ms-transform: translateY($value);
-       -o-transform: translateY($value);
-          transform: translateY($value);
+  -webkit-transform: translateZ($value);
+     -moz-transform: translateZ($value);
+      -ms-transform: translateZ($value);
+       -o-transform: translateZ($value);
+          transform: translateZ($value);
 }
   
 
@@ -77,6 +84,8 @@ $white:  #FFFFFF;
   z-index: -1;
   background: $background;
   background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 
 @mixin vertical-align {
@@ -112,48 +121,64 @@ $white:  #FFFFFF;
   }
 }
 
+@mixin results-fonts($size) {
+  color: $white;
+  @extend %smooth-font;
+  font-size: $size;
+  font-family: helvetica;
+  padding: 0;
+  margin: 0;
+}
+
+@mixin results-bg($width) {
+  background-color: $blue;
+  height: 100%;
+  width: $width;
+  opacity: 0.95;
+}
 
 // =============================================================================
 // FRONT PAGE
 // ==========
 
 #section0 {
+
   &:before {
-    @include background-image(url("../images/brooklyn.jpg") no-repeat center center fixed);
-  }
-}
-
-#main-box {
-  max-width: 35em;
-  height: 35em;
-  margin: 0 auto;
-  position: relative;
-
-  #start-business {
-    @include vertical-align;
-    @include circle($orange);
-    left: -7%;
+    @include background-image(url("../images/brooklyn.jpg"));
   }
 
-  #find-job {
-    @include vertical-align;
-    @include circle($yellow);
-    left: 38%;
-    top: 30%;
-  }
+  #main-box {
+    max-width: 35em;
+    height: 35em;
+    margin: 0 auto;
+    position: relative;
 
-  #help-business {
-    @include vertical-align;
-    @include circle($blue);
-    left: 38%;
-    top: 75%;
+    #start-business {
+      @include vertical-align;
+      @include circle($orange);
+      left: -7%;
+    }
+
+    #find-job {
+      @include vertical-align;
+      @include circle($yellow);
+      left: 38%;
+      top: 30%;
+    }
+
+    #help-business {
+      @include vertical-align;
+      @include circle($blue);
+      left: 38%;
+      top: 75%;
+    }
   }
 }
 
 
 // =============================================================================
 // SEARCH PAGE
-// ==========
+// ===========
 
 #section1 {
 
@@ -212,7 +237,6 @@ $white:  #FFFFFF;
            -o-transform: translate(0, -50%);
               transform: translate(0, -50%);
       pointer-events: none;
-      // font-style: italic;
       color: $white;
       font-size: 3em;
       @extend %smooth-font;
@@ -237,3 +261,77 @@ $white:  #FFFFFF;
 }
 
 
+// =============================================================================
+// RESULTS PAGE
+// ============
+
+.results {
+  @include results-bg(55%);
+  margin: 0 auto;
+  height: 100%;
+  
+  .results-text {
+    @extend %vertical-align;
+    text-align: justify;
+    padding: 0 2em;
+
+    h1 {
+      @include results-fonts(3.5em);
+    }
+
+    h2 {
+      @include results-fonts(2.8em);
+    }
+
+    h3 {
+      @include results-fonts(2.1em);
+    }
+
+    h4 {
+      @include results-fonts(1.4em);
+    }
+
+    p {
+      @include results-fonts(1.2em);
+    }
+  }
+}
+
+
+#section2 {
+  &:before {
+    @include background-image(url("../images/taxi.jpg"));
+    -webkit-filter: blur(5px);
+       -moz-filter: blur(5px);
+        -ms-filter: blur(5px);
+         -o-filter: blur(5px);
+            filter: blur(5px);
+  }
+
+  // #slide1 {
+  
+  // }
+
+  // #slide2 {
+  //   .results {
+  //     @include results-bg(100%);
+  //   }
+  // }
+}
+
+
+
+#search-icon {
+  position: absolute;
+  bottom: 3%;
+  right: 3%;
+  z-index: 999;
+
+  a {
+    @extend %smooth-transition;
+    color: $white;
+    &:hover {
+      color: $yellow;
+    }
+  }
+}
