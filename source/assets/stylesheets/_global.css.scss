@@ -308,15 +308,10 @@ $white:  #FFFFFF;
             filter: blur(5px);
   }
 
-  // #slide1 {
-  
-  // }
-
-  // #slide2 {
-  //   .results {
-  //     @include results-bg(100%);
-  //   }
-  // }
+  #slide2 {
+    background-color: $blue;
+    opacity: 0.9;
+  }
 }
 
 
