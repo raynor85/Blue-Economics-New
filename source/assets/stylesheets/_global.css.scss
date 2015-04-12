@@ -21,10 +21,28 @@ $white:  #FFFFFF;
 }
 
 %smooth-transition {
-  -webkit-transition: all .6s;
-  -moz-transition: all .6s;
-  -moz-transition: all .6s;
-  transition: all .6s;
+  -webkit-transition: all .5s;
+     -moz-transition: all .5s;
+      -ms-transition: all .5s;
+       -o-transition: all .5s;
+          transition: all .5s;
+}
+
+%border-shadow-none {
+  -webkit-box-shadow: none;
+     -moz-box-shadow: none;
+      -ms-box-shadow: none;
+       -o-box-shadow: none;
+          box-shadow: none;
+}
+
+%smooth-font {
+  font-weight: 200;
+  -webkit-font-smoothing: antialiased;
+     -moz-font-smoothing: antialiased;
+      -ms-font-smoothing: antialiased;
+       -o-font-smoothing: antialiased;
+          font-smoothing: antialiased;
 }
 
 
@@ -32,15 +50,30 @@ $white:  #FFFFFF;
 // MIXINS
 // ======
 
+@mixin transformY($value) {
+  -webkit-transform: translateY($value);
+     -moz-transform: translateY($value);
+      -ms-transform: translateY($value);
+       -o-transform: translateY($value);
+          transform: translateY($value);
+}
+
+@mixin transformZ($value) {
+  -webkit-transform: translateY($value);
+     -moz-transform: translateY($value);
+      -ms-transform: translateY($value);
+       -o-transform: translateY($value);
+          transform: translateY($value);
+}
+  
+
 @mixin background-image($background) {
   content: "";
   display: block;
   width: 100%;
   height: 100%;
   position: fixed;
-  -webkit-transform: translateZ(0);
-     -moz-transform: translateZ(0);
-          transform: translateZ(0);
+  @include transformZ(0);
   z-index: -1;
   background: $background;
   background-size: cover;
@@ -49,9 +82,7 @@ $white:  #FFFFFF;
 @mixin vertical-align {
   position: relative;
   top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
+  @include transformY(-50%);
 }
 
 @mixin circle($bg-color) {
@@ -64,7 +95,7 @@ $white:  #FFFFFF;
   @extend %smooth-transition;
 
   &:hover {
-    opacity: 0.8;
+    opacity: 0.9;
   }
 
   .text {
@@ -125,66 +156,84 @@ $white:  #FFFFFF;
 // ==========
 
 #section1 {
+
   &:before {
     @include background-image(linear-gradient(180deg, $orange, $orange));
   }
 
-  h1 {
-    font-size: 4em;
-    color: white;
-    font-weight: bold;
-  }
-
-  #industry {
+  .awesome-form {
+    margin: 0 auto 0 auto;
+    padding: 20px;
     @include outer-container;
+    height: auto;
+    overflow: hidden;
+
+    input,
+    label {
+      width: 100%;
+      margin-right: 20px;
+      padding: 20px 0;
+      width: 100%;
+      font-family: helvetica;
+      font-size: 18px;
+    }
+
+    .input-group {
+      position: relative;
+      width: 100%;
+    }
 
     input {
-      @include span-columns(8);
-      @include shift(2);
-
       background: transparent;
       border: 0;
-      border-bottom: 1px solid $white;
+      border-bottom: 2px solid $white;
+      color: $white;
+      font-size: 3em;
+      border-radius: 0;
+      padding: 0.3em 0.5em 0.3em 0.5em;
+      font-family: helvetica;
+      @extend %border-shadow-none;
 
-      &:focus {
-        border: transparent;
+      &:focus ~ label,
+      &:valid ~ label {
+        @extend %border-shadow-none;
+        top: 0;
+        font-size: 1.5em;
+        color: $white;
+      }
+    }
+
+    label {
+      position: absolute;
+      top: 50%;
+      -webkit-transform: translate(0, -50%);
+         -moz-transform: translate(0, -50%);
+          -ms-transform: translate(0, -50%);
+           -o-transform: translate(0, -50%);
+              transform: translate(0, -50%);
+      pointer-events: none;
+      // font-style: italic;
+      color: $white;
+      font-size: 3em;
+      @extend %smooth-font;
+      @extend %smooth-transition;
+    }
+
+    input[type="submit"] {
+      padding: 20px;
+      width: 35%;
+      border: 1px solid $white;
+      color: $white;
+      cursor: pointer;
+      font-family: tahoma;
+      @extend %smooth-transition;
+      @extend %smooth-font;
+      &:hover {
+        background: $white;
+        color: $orange;
       }
     }
   }
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-body {
-  background-color: $light-gray;
-  color: $medium-gray;
-}
-
-.delete-me {
-  @include align-items(center);
-  @include display(flex);
-  @include justify-content(center);
-  height: 100vh;
-
-  .container {
-    text-align: center;
-
-    h1 {
-      font-weight: 200;
-    }
-  }
-}

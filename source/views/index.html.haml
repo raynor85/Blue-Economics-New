@@ -14,19 +14,19 @@ title: Blue Economics
 #fullpage
   #section0.section
     #main-box
-      %a{:href => "#"}
+      %a{:href => "#secondPage"}
         #start-business
           .text
             %h1 I want to start a business.
             %h3 Entrepreneurial advice and credit.
   
-      %a{:href => "#"}
+      %a{:href => "#secondPage"}
         #find-job
           .text
             %h1 I want to find a better job.
             %h3 Workforce Development.
 
-      %a{:href => "#"}
+      %a{:href => "#secondPage"}
         #help-business
           .text
             %h1 I need help with my business.
@@ -35,10 +35,20 @@ title: Blue Economics
 
 
   #section1.section
-    %h1 
-      What industry are you interested in?
-    #industry
-      %input{:type => "text"}/
+    / %h1 
+    /   What industry are you interested in?
+    / #industry
+    /   %input#input{:type => "text"}/
+    /   .bar
+
+    %form.awesome-form{action: "", method: "post"}
+      .input-group
+        %input{type: "text", required: "required"}/
+        %label{:for => ""}
+          What industry are you interested in?
+      %input{type: "submit", value: "Ask"}
+
+
 
   #section2.section
     #slide1.slide{"data-anchor" => "slide1"}
