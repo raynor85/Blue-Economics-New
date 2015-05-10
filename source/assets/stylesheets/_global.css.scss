@@ -1,3 +1,8 @@
+body {
+  font-size: 16px;
+  font-size: 1rem;
+}
+
 // =============================================================================
 // VARIABLES
 // =========
@@ -6,7 +11,6 @@ $orange: #F36523;
 $yellow: #EC9F45;
 $blue:   #009ACC;
 $white:  #FFFFFF;
-
 
 // =============================================================================
 // PLACEHOLDERS
@@ -18,14 +22,6 @@ $white:  #FFFFFF;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
-}
-
-%smooth-transition {
-  -webkit-transition: all .5s;
-     -moz-transition: all .5s;
-      -ms-transition: all .5s;
-       -o-transition: all .5s;
-          transition: all .5s;
 }
 
 %border-shadow-none {
@@ -73,14 +69,13 @@ $white:  #FFFFFF;
           transform: translateZ($value);
 }
   
-
 @mixin background-image($background) {
+  // @include transformZ(0);
   content: "";
   display: block;
   width: 100%;
   height: 100%;
   position: fixed;
-  @include transformZ(0);
   z-index: -1;
   background: $background;
   background-size: cover;
@@ -89,22 +84,30 @@ $white:  #FFFFFF;
 }
 
 @mixin vertical-align {
+  @include transformY(-50%);
   position: relative;
   top: 50%;
-  @include transformY(-50%);
 }
 
-@mixin circle($bg-color) {
-  height: 21em;
-  width: 21em;
-  border-radius: 50%;
+@mixin circle(
+  $height: 30rem, 
+  $width: 30rem, 
+  $bg-color: $white, 
+  $border-radius: 50%,
+  $h1: 1.75rem,
+  $h3: 1.25rem
+  ) {
+  @include transition(all 0.3s);
+  height: $height;
+  width: $width;
+  border-radius: $border-radius;
   background-color: $bg-color;
   position: absolute;
-  opacity: 0.7;
-  @extend %smooth-transition;
-
+  opacity: 0.8;
+  
   &:hover {
-    opacity: 0.9;
+    opacity: 1;
+    // z-index: 9999;
   }
 
   .text {
@@ -117,13 +120,18 @@ $white:  #FFFFFF;
 
     h1 {
       font-weight: bold;
+      font-size: $h1;
     } 
+
+    h3 {
+      font-size: $h3;
+    }
   }
 }
 
 @mixin results-fonts($size) {
-  color: $white;
   @extend %smooth-font;
+  color: $white;
   font-size: $size;
   font-family: helvetica;
   padding: 0;
@@ -137,43 +145,261 @@ $white:  #FFFFFF;
   opacity: 0.95;
 }
 
+
 // =============================================================================
 // FRONT PAGE
 // ==========
 
 #section0 {
-
   &:before {
     @include background-image(url("../images/brooklyn.jpg"));
   }
 
   #main-box {
-    max-width: 35em;
-    height: 35em;
+    max-width: 35rem;
+    height: 35rem;
     margin: 0 auto;
     position: relative;
+    // font-size: 2rem;
 
     #start-business {
       @include vertical-align;
-      @include circle($orange);
-      left: -7%;
+      @include circle($bg-color: $orange);
+      left: 7%;
     }
 
     #find-job {
       @include vertical-align;
-      @include circle($yellow);
-      left: 38%;
-      top: 30%;
+      @include circle($bg-color: $yellow);
+      left: 75%;
+      top: 15%;
+      z-index: 1;
     }
 
     #help-business {
       @include vertical-align;
-      @include circle($blue);
-      left: 38%;
-      top: 75%;
+      @include circle($bg-color: $blue);
+      left: 75%;
+      top: 85%;
     }
   }
 }
+
+@media (max-width: 1366px) {
+  #section0 {
+    &:before {
+      @include background-image(url("../images/brooklyn.jpg"));
+    }
+
+    #main-box {
+      max-width: 35rem;
+      height: 35rem;
+      margin: 0 auto;
+      position: relative;
+
+      #start-business {
+        @include vertical-align;
+        @include circle(
+          $height: 22rem, 
+          $width: 22rem, 
+          $bg-color: $orange, 
+          $border-radius: 50%,
+          $h1: 1.25rem,
+          $h3: 1rem
+        );
+        left: 18%;
+      }
+
+      #find-job {
+        @include vertical-align;
+        @include circle(
+          $height: 22rem, 
+          $width: 22rem, 
+          $bg-color: $yellow, 
+          $border-radius: 50%,
+          $h1: 1.25rem,
+          $h3: 1rem
+        );
+        left: 66%;
+        top: 22%;
+      }
+
+      #help-business {
+        @include vertical-align;
+        @include circle(
+          $height: 22rem, 
+          $width: 22rem, 
+          $bg-color: $blue, 
+          $border-radius: 50%,
+          $h1: 1.25rem,
+          $h3: 1rem
+        );
+        left: 66%;
+        top: 74%;
+      }
+    }
+  }
+}
+
+
+@media (max-width: 1282px) {
+  #section0 {
+    &:before {
+      @include background-image(url("../images/brooklyn.jpg"));
+    }
+
+    #main-box {
+      max-width: 35rem;
+      height: 35rem;
+      margin: 0 auto;
+      position: relative;
+
+      #start-business {
+        @include vertical-align;
+        @include circle(
+          $height: 20rem, 
+          $width: 20rem, 
+          $bg-color: $orange, 
+          $border-radius: 50%,
+          $h1: 1.25rem,
+          $h3: 1rem
+        );
+        left: 21%;
+      }
+
+      #find-job {
+        @include vertical-align;
+        @include circle(
+          $height: 20rem, 
+          $width: 20rem, 
+          $bg-color: $yellow, 
+          $border-radius: 50%,
+          $h1: 1.25rem,
+          $h3: 1rem
+        );
+        left: 64%;
+        top: 26%;
+      }
+
+      #help-business {
+        @include vertical-align;
+        @include circle(
+          $height: 20rem, 
+          $width: 20rem, 
+          $bg-color: $blue, 
+          $border-radius: 50%,
+          $h1: 1.25rem,
+          $h3: 1rem
+        );
+        left: 64%;
+        top: 75%;
+      }
+    }
+  }
+}
+
+
+@media (max-width: 1282px) {
+  #section0 {
+    &:before {
+      @include background-image(url("../images/brooklyn.jpg"));
+    }
+
+    #main-box {
+      max-width: 35rem;
+      height: 35rem;
+      margin: 0 auto;
+      position: relative;
+
+      #start-business {
+        @include vertical-align;
+        @include circle(
+          $height: 18rem, 
+          $width: 18rem, 
+          $bg-color: $orange, 
+          $border-radius: 50%,
+          $h1: 1.05rem,
+          $h3: 0.9rem
+        );
+        left: 24%;
+      }
+
+      #find-job {
+        @include vertical-align;
+        @include circle(
+          $height: 18rem, 
+          $width: 18rem, 
+          $bg-color: $yellow, 
+          $border-radius: 50%,
+          $h1: 1.05rem,
+          $h3: 0.9rem
+        );
+        left: 61%;
+        top: 28%;
+      }
+
+      #help-business {
+        @include vertical-align;
+        @include circle(
+          $height: 18rem, 
+          $width: 18rem, 
+          $bg-color: $blue, 
+          $border-radius: 50%,
+          $h1: 1.05rem,
+          $h3: 0.9rem
+        );
+        left: 61%;
+        top: 74%;
+      }
+    }
+  }
+}
+
+
+@media (max-width: 640px) {
+  #section0 {
+    &:before {
+      @include background-image(url("../images/brooklyn.jpg"));
+    }
+
+    #main-box {
+      max-width: 35rem;
+      height: 35rem;
+      margin: 0 auto;
+      position: relative;
+
+      #start-business {
+        @include vertical-align;
+        @include circle(5rem, 90%, $orange, 12px);
+        left:0;
+        right:0;
+        margin-left:auto;
+        margin-right:auto;
+      }
+
+      #find-job {
+        @include vertical-align;
+        @include circle(5rem, 90%, $yellow, 12px);
+        left:0;
+        right:0;
+        margin-left:auto;
+        margin-right:auto;
+        top: 35%;
+      }
+
+      #help-business {
+        @include vertical-align;
+        @include circle(5rem, 90%, $blue, 12px);
+        left:0;
+        right:0;
+        margin-left:auto;
+        margin-right:auto;
+        top: 65%;
+      }
+    }
+  }
+}
+
 
 
 // =============================================================================
@@ -213,9 +439,9 @@ $white:  #FFFFFF;
       border: 0;
       border-bottom: 2px solid $white;
       color: $white;
-      font-size: 3em;
+      font-size: 300%;
       border-radius: 0;
-      padding: 0.3em 0.5em 0.3em 0.5em;
+      padding: 0.3rem 0.5rem 0.3rem 0.5rem;
       font-family: helvetica;
       @extend %border-shadow-none;
 
@@ -223,7 +449,7 @@ $white:  #FFFFFF;
       &:valid ~ label {
         @extend %border-shadow-none;
         top: 0;
-        font-size: 1.5em;
+        font-size: 1.5rem;
         color: $white;
       }
     }
@@ -238,9 +464,9 @@ $white:  #FFFFFF;
               transform: translate(0, -50%);
       pointer-events: none;
       color: $white;
-      font-size: 3em;
+      font-size: 3rem;
       @extend %smooth-font;
-      @extend %smooth-transition;
+      @include transition(all 0.5s);
     }
 
     input[type="submit"] {
@@ -250,7 +476,7 @@ $white:  #FFFFFF;
       color: $white;
       cursor: pointer;
       font-family: tahoma;
-      @extend %smooth-transition;
+      @include transition(all 0.5s);
       @extend %smooth-font;
       &:hover {
         background: $white;
@@ -264,35 +490,47 @@ $white:  #FFFFFF;
 // =============================================================================
 // RESULTS PAGE
 // ============
+@media only screen and (min-width: 770px) {
 
+}
+
+// @media (max-width: 600px) {
+//   .facet_sidebar {
+//     display: none;
+//   }
+// }
 .results {
-  @include results-bg(55%);
+  @include results-bg(100%);
   margin: 0 auto;
   height: 100%;
+
+  @media only screen and (min-width: 770px) {
+    @include results-bg(55%);
+  }
   
   .results-text {
     @extend %vertical-align;
     text-align: justify;
-    padding: 0 2em;
+    padding: 0 2rem;
 
     h1 {
-      @include results-fonts(3.5em);
+      @include results-fonts(3.5rem);
     }
 
     h2 {
-      @include results-fonts(2.8em);
+      @include results-fonts(2.8rem);
     }
 
     h3 {
-      @include results-fonts(2.1em);
+      @include results-fonts(2.1rem);
     }
 
     h4 {
-      @include results-fonts(1.4em);
+      @include results-fonts(1.4rem);
     }
 
     p {
-      @include results-fonts(1.2em);
+      @include results-fonts(1.2rem);
     }
   }
 }
@@ -323,10 +561,13 @@ $white:  #FFFFFF;
   z-index: 999;
 
   a {
-    @extend %smooth-transition;
+    @include transition(all 0.5s);
     color: $white;
     &:hover {
       color: $yellow;
+      -ms-transform: scale(1.2); /* IE 9 */
+      -webkit-transform: scale(1.2); /* Safari */
+      transform: scale(1.2);
     }
   }
 }
