@@ -370,31 +370,110 @@ $white:  #FFFFFF;
 
       #start-business {
         @include vertical-align;
-        @include circle(5rem, 90%, $orange, 12px);
-        left:0;
-        right:0;
-        margin-left:auto;
-        margin-right:auto;
+        @include circle(
+          $height: 16rem, 
+          $width: 16rem, 
+          $bg-color: $orange, 
+          $border-radius: 50%,
+          $h1: 0.95rem,
+          $h3: 0.85rem
+        );
+        left: 27%;
       }
 
       #find-job {
         @include vertical-align;
-        @include circle(5rem, 90%, $yellow, 12px);
-        left:0;
-        right:0;
-        margin-left:auto;
-        margin-right:auto;
-        top: 35%;
+        @include circle(
+          $height: 16rem, 
+          $width: 16rem, 
+          $bg-color: $yellow, 
+          $border-radius: 50%,
+          $h1: 0.95rem,
+          $h3: 0.85rem
+        );
+        left: 62%;
+        top: 33%;
       }
 
       #help-business {
         @include vertical-align;
-        @include circle(5rem, 90%, $blue, 12px);
+        @include circle(
+          $height: 16rem, 
+          $width: 16rem, 
+          $bg-color: $blue, 
+          $border-radius: 50%,
+          $h1: 0.95rem,
+          $h3: 0.85rem
+        );
+        left: 62%;
+        top: 71%;
+      }
+    }
+  }
+}
+
+
+@media (max-width: 480px) {
+  #section0 {
+    &:before {
+      @include background-image(url("../images/brooklyn.jpg"));
+    }
+
+    #main-box {
+      max-width: 100%;
+      height: 100%;
+      margin: 0 auto;
+      position: relative;
+
+      #start-business {
+        @include vertical-align;
+        @include circle(
+          $height: 8rem, 
+          $width: 90%, 
+          $bg-color: $orange, 
+          $border-radius: 12px,
+          $h1: 0.95rem,
+          $h3: 0.85rem
+        );
         left:0;
         right:0;
         margin-left:auto;
         margin-right:auto;
-        top: 65%;
+        top: 30%;
+      }
+
+      #find-job {
+        @include vertical-align;
+        @include circle(
+          $height: 8rem, 
+          $width: 90%, 
+          $bg-color: $yellow, 
+          $border-radius: 12px,
+          $h1: 0.95rem,
+          $h3: 0.85rem
+        );
+        left:0;
+        right:0;
+        margin-left:auto;
+        margin-right:auto;
+        top: 50%;
+      }
+
+      #help-business {
+        @include vertical-align;
+        @include circle(
+          $height: 8rem, 
+          $width: 90%, 
+          $bg-color: $blue, 
+          $border-radius: 12px,
+          $h1: 0.95rem,
+          $h3: 0.85rem
+        );
+        left:0;
+        right:0;
+        margin-left:auto;
+        margin-right:auto;
+        top: 70%;
       }
     }
   }
