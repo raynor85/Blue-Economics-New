@@ -1,86 +1,41 @@
-# Proteus - Middleman
+--GITHUB--
 
-## About Proteus
+Grab the project from https://github.com/raynor85/Blue-Economics-New and "FORK" it. After setting up the
+local webserver, you can start work on the website locally (the forked project should be located in the webserver
+folder, which for MAMP and XAMP is "htdocs"). After you have developed and tested something, you can make a pull 
+request, so your modification would be added to https://github.com/raynor85/Blue-Economics-New
 
-[Proteus](http://github.com/thoughtbot/proteus) is a collection of useful
-starter kits to help you prototype faster. It follows the
-[thoughtbot styleguide](https://github.com/thoughtbot/guides) and includes our
-favorite front end tools.
+--WEBSERVER--
 
-## About Middleman
+Since the website works under PHP and MYSQL, you need to install a webserver. For mac user I suggest MAMP, but
+also XAMPP is good too.
+After installing MAMP (or XAMPP), you have to activate the Virtual Host for your web server. To do so you have to
+find the "httpd.conf" file and be sure to decomment (removing the # at the beginning of the Include statement) 
+the inclusion of the file "httpd-vhosts.conf". Locate the string having format similar to this:
 
-Middleman is a static site generator built in Ruby. This makes it a great fit
-for projects that may end up as a Ruby on Rails app. Its minimalistic structure
-makes it very easy to work with, and includes support for deploying to Github
-Pages.
+Include /Applications/MAMP/conf/apache/extra/httpd-vhosts.conf
 
-## Includes
+Locate the file "httpd-vhosts.conf" and add the virtual directory of the blue economics website. It should be
+something similar to this (depending on the path of your project):
 
-* [HAML](http://haml.info):
-  Simple template markup
-* [Coffeescript](http://coffeescript.org):
-  Write javascript with simpler syntax
-* [Sass](http://sass-lang.com):
-  CSS with superpowers
-* [Bourbon](http://bourbon.io):
-  Sass mixin library
-* [Neat](http://neat.bourbon.io):
-  Semantic grid for Sass and Bourbon
-* [Bitters](http://bitters.bourbon.io):
-  Scaffold styles, variables and structure for Bourbon projects.
-* [Middleman Live Reload](https://github.com/middleman/middleman-livereload):
-  Reloads the page when files change
-* [Middleman Deploy](https://github.com/karlfreeman/middleman-deploy):
-  Deploy your Middleman build via rsync, ftp, sftp, or git (deploys to Github Pages by default)
+<VirtualHost *:80>
+   # This is the file system path of your blue economics local project
+   DocumentRoot /Applications/MAMP/htdocs/blue_economics/build
+   # This is how your virtual host would be reached via browser
+   ServerName local.blue_economics.com
+</VirtualHost>
 
-We also recommend [Refills](http://refills.bourbon.io/) for prepackaged interface patterns.
+In the end you have to add to your .hosts the following:
 
-## Getting Started
+127.0.0.1       local.blue_economics.com
 
-Set up your project in your code directory
-```
-git clone git@github.com:thoughtbot/proteus-middleman.git your-project-folder
-cd your-project-folder
-git remote rm origin
-git remote add origin your-git-url
-```
+Start your MAMP or XAMPP after setting the default Apache port (80) and the default MySQL port (3306),
+and check if you can see the website at "local.blue_economics.com". If you see a database connection error
+or you can see the website, you have accomplished this part.
 
-Install dependencies:
-```
-bundle install
-```
+--DATABASE--
 
-Run the server
-```
-middleman
-```
+The website read from the local database, which can be found inside /dump, so you have to import it in your MySQL.
+The database credential can be found in /build/config/dev/mysql.ini for development and /build/config/prod/mysql.ini 
+for production (now we only care about development). It is better to keep those and adjust the MySQL to work with those.
 
-Deploy to Github Pages
-```
-middleman deploy
-```
-
-Or install the [Proteus gem](https://github.com/thoughtbot/proteus) and enjoy some shortcuts.
-
-## Directories
-
-Stylesheets, fonts, images, and JavaScript files go in the `/source/assets/` directory.
-Vendor stylesheets and JavaScripts should go in each of their `/vendor/` directories.
-
-## Contributing
-
-If you have problems, please create a
-[GitHub Issue](https://github.com/thoughtbot/proteus-middleman/issues).
-
-Have a fix or want to add a feature?
-[Pull Requests](https://github.com/thoughtbot/proteus-middleman/pulls) are welcome!
-
-## Credits
-
-[![thoughtbot](http://images.thoughtbot.com/bourbon/thoughtbot-logo.svg)](http://thoughtbot.com)
-
-Proteus Middleman is maintained and funded by [thoughtbot, inc](http://thoughtbot.com). Thank you to all of [the contributors](https://github.com/thoughtbot/proteus-middleman/contributors)!
-
-## License
-
-Copyright © 2014–2015 [thoughtbot, inc](http://thoughtbot.com). Proteus Middleman is free software, and may be redistributed under the terms specified in the [license](LICENSE.md).
