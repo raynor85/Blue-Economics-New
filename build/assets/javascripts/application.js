@@ -445,7 +445,7 @@ $(document).ready(function() {
 });
 
 /**
- * model.js - start
+ * Model - start
  */
 
 /**
@@ -483,7 +483,7 @@ $(document).ready(function($) {
 });
 
 /**
- * model.js - end
+ * Model - end
  */
 ;
 $(document).ready(function(){
