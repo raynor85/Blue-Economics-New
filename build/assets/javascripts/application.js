@@ -465,15 +465,21 @@ var getIndustries = function(searchQuery, parentElement) {
       parentElement.append('<li>' + elem.name + '</li>');
     });
   };
-  $.getJSON(url, {}, function(data) {
-    createList(parentElement, data);
-  });
+  // $.getJSON(url, {}, function(data) {
+  //   createList(parentElement, data);
+  // });
+
+  blueEconomics.search(searchQuery)
+  	.done(function(data) {
+  		createList(parentElement, data);
+  	});
 };
 
 var getIndustriesListener = function() {
   var parentElement = $('.input-group ul');
   parentElement = parentElement.length ? parentElement : $('<ul>').appendTo('.input-group');
-  $('#section1 .awesome-form input').keydown(function(e) {
+  //$('#section1 .awesome-form input').keydown(function(e) {
+  $('#section1 .awesome-form input').keyup(function(e) {
     getIndustries(e.currentTarget.value, parentElement);
   });
 };
