@@ -7,6 +7,7 @@ require 'Slim/Slim.php';
 $app = new \Slim\Slim(array(
     // change to 'development' for testing
     'mode' => 'development'
+    //'mode' => 'production'
 ));
 
 // Only invoked if mode is "production"
