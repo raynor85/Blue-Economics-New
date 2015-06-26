@@ -1,0 +1,24 @@
+{
+  "name": "Blue-Economics",
+  "version": "1.0.0",
+  "description": "Blue Economics website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Blue Economics",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-jshint": "^1.11.0",
+    "gulp-uglify": "^1.2.0",
+    "gulp-webpack": "^1.5.0",
+    "jshint-stylish": "^2.0.0"
+  },
+  "dependencies": {
+    "jquery": "^2.1.0",
+    "jquery-ui": "^1.10.5",
+    "node-libs-browser": "^0.5.2",
+    "webpack": "^1.9.11"
+  }
+}
