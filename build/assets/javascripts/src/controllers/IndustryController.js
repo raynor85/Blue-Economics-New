@@ -2,9 +2,12 @@
  * Created by john on 6/28/15.
  */
 
+'use strict';
+
 /**
- *
+ * Controller for the 'What industry' page
  * @param $scope
+ * @param $search
  * @param blueEconomics - The Blue Economics API
  * @constructor
  */
@@ -15,7 +18,7 @@ function IndustryController($scope, $state, blueEconomics) {
     this.ask           = ask;
     this.industry      = '';
     this.getIndustries = getIndustries;
-    this.searchResults = ['test1', 'test2', 'test3'];
+    this.searchResults = [];
 
 
     /**

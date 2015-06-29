@@ -6,28 +6,28 @@ webpackJsonp([0],[
 	 * Created by john on 6/20/15.
 	 */
 
-	var $ = __webpack_require__(1);
+	'use strict';
 
 	/*  vendor files have been packed into a separate chunk included in index.html */
 
 
 	/*  This is the entry point to the application. It initializes angular and sets everything up. */
-	__webpack_require__(3)();
+	__webpack_require__(1)();
 
 
 /***/ },
-/* 1 */,
-/* 2 */,
-/* 3 */
+/* 1 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Created by john on 6/27/15.
 	 */
 
-	var angular   = __webpack_require__(4);
-	var uiRouter  = __webpack_require__(6);
-	var ngAnimate = __webpack_require__(7);
+	'use strict';
+
+	var angular   = __webpack_require__(2);
+	var uiRouter  = __webpack_require__(4);
+	var ngAnimate = __webpack_require__(5);
 
 
 	/**
@@ -40,19 +40,19 @@ webpackJsonp([0],[
 	    $stateProvider
 	        .state('home', {
 	            url         : '/',
-	            template    : __webpack_require__(9),
+	            template    : __webpack_require__(7),
 	            controller  : 'HomeController',
 	            controllerAs: 'vm'
 	        })
 	        .state('industry', {
 	            url         : '/industry',
-	            template    : __webpack_require__(10),
+	            template    : __webpack_require__(8),
 	            controller  : 'IndustryController',
 	            controllerAs: 'vm'
 	        })
 	        .state('queryResults', {
 	            url         : '/results',
-	            template    : __webpack_require__(11),
+	            template    : __webpack_require__(9),
 	            controller  : 'QueryResultsController',
 	            controllerAs: 'vm'
 	        });
@@ -71,64 +71,71 @@ webpackJsonp([0],[
 	        .config(stateConfig);
 
 	    angular.module('app')
-	        .controller('HomeController', __webpack_require__(12))
-	        .controller('IndustryController', __webpack_require__(13))
-	        .controller('QueryResultsController', __webpack_require__(14))
-	        .factory('blueEconomics', __webpack_require__(15))
+	        .controller('HomeController', __webpack_require__(10))
+	        .controller('IndustryController', __webpack_require__(11))
+	        .controller('QueryResultsController', __webpack_require__(12))
+	        .factory('blueEconomics', __webpack_require__(13))
 	        .directive('fullPage', __webpack_require__(17));
 	};
 
 /***/ },
+/* 2 */,
+/* 3 */,
 /* 4 */,
 /* 5 */,
 /* 6 */,
-/* 7 */,
-/* 8 */,
-/* 9 */
+/* 7 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class='section' id='section0' full-page>\n    <div id='main-box'>\n        <a ui-sref=\"industry\">\n            <div id='start-business'>\n                <div class='text'>\n                    <h1>I want to start a business.</h1>\n\n                    <h3>Entrepreneurial advice and credit.</h3>\n                </div>\n            </div>\n        </a>\n        <a ui-sref=\"industry\">\n            <div id='find-job'>\n                <div class='text'>\n                    <h1>I want to find a better job.</h1>\n\n                    <h3>Workforce Development.</h3>\n                </div>\n            </div>\n        </a>\n        <a ui-sref=\"industry\">\n            <div id='help-business'>\n                <div class='text'>\n                    <h1>I need help with my business.</h1>\n\n                    <h3>Small business services and credit.</h3>\n                </div>\n            </div>\n        </a>\n    </div>\n</div>";
 
 /***/ },
-/* 10 */
+/* 8 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class='section' id='section1' full-page>\n    <form action='' class='awesome-form' method='get' ng-submit=\"vm.ask()\">\n        <div class='input-group'>\n            <input required='required' type='text' ng-model=\"vm.industry\" ng-change=\"vm.getIndustries()\"\n                   ng-model-options=\"{debounce:500}\">\n            <label for=''>\n                What industry are you interested in?\n            </label>\n        </div>\n        <ul ng-if=\"vm.searchResults.length > 0\">\n            <li ng-repeat=\"result in vm.searchResults\">\n                {{result.name}}\n            </li>\n        </ul>\n        <input type='submit' value='Ask'>\n    </form>\n</div>";
+	module.exports = "<div class='section' id='section1' full-page>\n    <form action='' class='awesome-form' method='get' ng-submit=\"vm.ask()\">\n        <div class='input-group'>\n            <input required='required' type='text' ng-model=\"vm.industry\" ng-change=\"vm.getIndustries()\"\n                   ng-model-options=\"{debounce:250}\">\n            <label for=''>\n                What industry are you interested in?\n            </label>\n        </div>\n        <ul ng-if=\"vm.searchResults.length > 0\">\n            <li ng-repeat=\"result in vm.searchResults\">\n                {{result.name}}\n            </li>\n        </ul>\n        <input type='submit' value='Ask'>\n    </form>\n</div>";
 
 /***/ },
-/* 11 */
+/* 9 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class='section' id='section2' full-page>\n    <div class='slide' data-anchor='slideA' id='slide1'>\n        <div class='results'>\n            <div class='results-text'>\n                <h1>Job Title</h1>\n                <h4>\n                    <strong>\n                        Salary:\n                    </strong>\n                    65,950, Per Year\n                </h4>\n                <br>\n\n                <p>\n                    <strong>\n                        Also Called:\n                    </strong>\n                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat excepturi quam culpa recusan.\n                </p>\n                <br>\n\n                <p>\n                    <strong>\n                        What they do:\n                    </strong>\n                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis nihil natus facilis sed voluptatum\n                    impedit error laudantium fuga blanditiis, architecto? Sapiente possimus quas exercitationem\n                    cupiditate quod ad fugit nesciunt temporibus! Lorem ipsum dolor sit amet, consectetur adipisicing\n                    elit. Dolorem nemo assumenda debitis, eos animi, asperiores quas quod necessitatibus quis inventore\n                    reiciendis nulla quasi perferendis, et quibusdam\n                    aliquam. Facere, consequuntur, blanditiis.\n                </p>\n                <br>\n\n                <p>\n                    <strong>\n                        Education Required:\n                    </strong>\n                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.\n                </p>\n            </div>\n        </div>\n    </div>\n    <div class='slide' data-anchor='slideB' id='slide2'>\n        <div class='results'>\n            <div class='results-text'>\n                <h1>Job Title</h1>\n                <h4>\n                    <strong>\n                        Salary:\n                    </strong>\n                    65,950, Per Year\n                </h4>\n                <br>\n\n                <p>\n                    <strong>\n                        Also Called:\n                    </strong>\n                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat excepturi quam culpa recusan.\n                </p>\n                <br>\n\n                <p>\n                    <strong>\n                        What they do:\n                    </strong>\n                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis nihil natus facilis sed voluptatum\n                    impedit error laudantium fuga blanditiis, architecto? Sapiente possimus quas exercitationem\n                    cupiditate quod ad fugit nesciunt temporibus! Lorem ipsum dolor sit amet, consectetur adipisicing\n                    elit. Dolorem nemo assumenda debitis, eos animi, asperiores quas quod necessitatibus quis inventore\n                    reiciendis nulla quasi perferendis, et quibusdam aliquam. Facere, consequuntur, blanditiis.\n                </p>\n                <br>\n\n                <p>\n                    <strong>\n                        Education Required:\n                    </strong>\n                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.\n                </p>\n            </div>\n        </div>\n    </div>\n    <div id='search-icon'>\n        <a href='#secondPage'>\n            <i class='fa fa-search fa-4x'></i>\n        </a>\n    </div>\n</div>\n";
 
 /***/ },
-/* 12 */
-/***/ function(module, exports, __webpack_require__) {
+/* 10 */
+/***/ function(module, exports) {
 
 	/**
 	 * Created by john on 6/27/15.
 	 */
 
-	var $ = __webpack_require__(1);  //todo: fix this
-	var angular = __webpack_require__(4);
+	'use strict';
 
+	/**
+	 * Controller for the initial page.
+	 * @param $scope
+	 * @constructor
+	 */
 	function HomeController($scope) {
-	    this.test = 'asdf';
+
 	}
 
 	module.exports = HomeController;
 
 /***/ },
-/* 13 */
+/* 11 */
 /***/ function(module, exports) {
 
 	/**
 	 * Created by john on 6/28/15.
 	 */
 
+	'use strict';
+
 	/**
-	 *
+	 * Controller for the 'What industry' page
 	 * @param $scope
+	 * @param $search
 	 * @param blueEconomics - The Blue Economics API
 	 * @constructor
 	 */
@@ -139,7 +146,7 @@ webpackJsonp([0],[
 	    this.ask           = ask;
 	    this.industry      = '';
 	    this.getIndustries = getIndustries;
-	    this.searchResults = ['test1', 'test2', 'test3'];
+	    this.searchResults = [];
 
 
 	    /**
@@ -165,7 +172,7 @@ webpackJsonp([0],[
 	module.exports = IndustryController;
 
 /***/ },
-/* 14 */
+/* 12 */
 /***/ function(module, exports) {
 
 	/**
@@ -179,14 +186,16 @@ webpackJsonp([0],[
 	module.exports = QueryResultsController;
 
 /***/ },
-/* 15 */
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Created by john on 6/28/15.
 	 */
 
-	var api = __webpack_require__(16);
+	'use strict';
+
+	var api = __webpack_require__(14);
 
 	/**
 	 * Blue Economics API service
@@ -200,14 +209,16 @@ webpackJsonp([0],[
 	module.exports = blueEconomics;
 
 /***/ },
-/* 16 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
 	 * Created by john on 6/20/15.
 	 */
 
-	var $ = __webpack_require__(1);
+	'use strict';
+
+	var $ = __webpack_require__(15);
 
 	/**
 
@@ -520,6 +531,8 @@ webpackJsonp([0],[
 
 
 /***/ },
+/* 15 */,
+/* 16 */,
 /* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -527,7 +540,9 @@ webpackJsonp([0],[
 	 * Created by john on 6/28/15.
 	 */
 
-	var $ = __webpack_require__(1);
+	'use strict';
+
+	var $ = __webpack_require__(15);
 
 	/**
 	 * Directive that calls fullpage.js when the element is loaded and removes it when it goes out of scope

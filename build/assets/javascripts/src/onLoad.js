@@ -4,6 +4,7 @@ TODO: This file is no longer needed and will be deleted later on.
 
  */
 
+'use strict';
 
 var $             = require('jquery');
 var blueEconomics = require('./blueEconomicsApi');

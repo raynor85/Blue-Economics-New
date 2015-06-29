@@ -2,7 +2,7 @@
  * Created by john on 6/20/15.
  */
 
-var $ = require('jquery');
+'use strict';
 
 /*  vendor files have been packed into a separate chunk included in index.html */
 

@@ -2,11 +2,15 @@
  * Created by john on 6/27/15.
  */
 
-var $ = require('jquery');  //todo: fix this
-var angular = require('angular');
+'use strict';
 
+/**
+ * Controller for the initial page.
+ * @param $scope
+ * @constructor
+ */
 function HomeController($scope) {
-    this.test = 'asdf';
+
 }
 
 module.exports = HomeController;
