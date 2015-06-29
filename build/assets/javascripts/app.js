@@ -93,7 +93,7 @@ webpackJsonp([0],[
 /* 10 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class='section' id='section1' full-page>\n    <form action='' class='awesome-form' method='get'>\n        <div class='input-group'>\n            <input required='required' type='text' ng-model=\"vm.industry\" ng-change=\"vm.getIndustries()\"\n                   ng-model-options=\"{debounce:500}\">\n            <label for=''>\n                What industry are you interested in?\n            </label>\n        </div>\n        <ul ng-if=\"vm.searchResults.length > 0\">\n            <li ng-repeat=\"result in vm.searchResults\">\n                {{result.name}}\n            </li>\n        </ul>\n        <input type='submit' value='Ask' ng-click=\"vm.ask()\">\n    </form>\n</div>";
+	module.exports = "<div class='section' id='section1' full-page>\n    <form action='' class='awesome-form' method='get' ng-submit=\"vm.ask()\">\n        <div class='input-group'>\n            <input required='required' type='text' ng-model=\"vm.industry\" ng-change=\"vm.getIndustries()\"\n                   ng-model-options=\"{debounce:500}\">\n            <label for=''>\n                What industry are you interested in?\n            </label>\n        </div>\n        <ul ng-if=\"vm.searchResults.length > 0\">\n            <li ng-repeat=\"result in vm.searchResults\">\n                {{result.name}}\n            </li>\n        </ul>\n        <input type='submit' value='Ask'>\n    </form>\n</div>";
 
 /***/ },
 /* 11 */
