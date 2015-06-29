@@ -1,3 +1,10 @@
+/*
+
+TODO: This file is no longer needed and will be deleted later on.
+
+ */
+
+
 var $             = require('jquery');
 var blueEconomics = require('./blueEconomicsApi');
 
@@ -33,7 +40,7 @@ function setContinuousNavigation() {
     }
     else {
         $('#fullpage').fullpage({
-            anchors           : ['firstPage', 'secondPage', 'thirdPage'],
+            //anchors           : ['firstPage', 'secondPage', 'thirdPage'],
             slidesNavigation  : true,
             continuousVertical: false
         });
@@ -42,7 +49,6 @@ function setContinuousNavigation() {
 
 
 var getIndustries = function (searchQuery, parentElement) {
-    var url        = '/search/:' + searchQuery;
     var createList = function (parentElement, data) {
         parentElement.html('');
         $(data.industries).each(function (i, elem) {

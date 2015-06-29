@@ -8,6 +8,71 @@
 @import url(vendor/jquery.fullPage.css);
 @import url(vendor/examples.css);
 
+
+
+
+/* Have to set height explicity on ui-view
+to prevent collapsing during animation*/
+.well[ui-view]{
+  height: 65px;
+}
+
+.ui-view-container {
+  position: relative;
+}
+
+[ui-view].ng-enter, [ui-view].ng-leave {
+  position: absolute;
+  left: 0;
+  right: 0;
+  -webkit-transition:all .5s ease-in-out;
+  -moz-transition:all .5s ease-in-out;
+  -o-transition:all .5s ease-in-out;
+  transition:all .5s ease-in-out;
+}
+
+[ui-view].ng-enter {
+  opacity: 0;
+  -webkit-transform:translate3d(100px, 0, 0);
+    -moz-transform:translate3d(100px, 0, 0);
+    transform:translate3d(100px, 0, 0);
+}
+
+[ui-view].ng-enter-active {
+  opacity: 1;
+  -webkit-transform:scale3d(1, 1, 1);
+  -moz-transform:scale3d(1, 1, 1);
+  transform:scale3d(1, 1, 1);
+}
+
+[ui-view].ng-leave {
+  opacity: 1;
+  /*padding-left: 0px;*/
+  -webkit-transform:translate3d(0, 0, 0);
+  -moz-transform:translate3d(0, 0, 0);
+  transform:translate3d(0, 0, 0);
+}
+
+[ui-view].ng-leave-active {
+  opacity: 0;
+  /*padding-left: 100px;*/
+  -webkit-transform:translate3d(100px, 0, 0);
+  -moz-transform:translate3d(100px, 0, 0);
+  transform:translate3d(100px, 0, 0);
+}
+
+
+
+
+
+
+html{
+  height: 100%;
+}
+body {
+  min-height: 100%;
+}
+
 html {
   font-family: sans-serif;
   /* 1 */
@@ -446,7 +511,7 @@ th {
   padding-left: 0;
   margin-left: 2.14286em;
   list-style-type: none; }
-  
+
   .fa-ul > li {
     position: relative; }
 
@@ -457,7 +522,7 @@ th {
   width: 2.14286em;
   top: 0.14286em;
   text-align: center; }
-  
+
   .fa-li.fa-lg {
     left: -1.85714em; }
 
@@ -2382,13 +2447,13 @@ button {
   user-select: none;
   vertical-align: middle;
   white-space: nowrap; }
-  
+
   input[type="button"]:hover, input[type="button"]:focus, input[type="reset"]:hover, input[type="reset"]:focus, input[type="submit"]:hover, input[type="submit"]:focus,
   button:hover,
   button:focus {
     background-color: #2c5999;
     color: #fff; }
-  
+
   input[type="button"]:disabled, input[type="reset"]:disabled, input[type="submit"]:disabled,
   button:disabled {
     cursor: not-allowed;
@@ -2413,10 +2478,10 @@ select {
 label {
   font-weight: 600;
   margin-bottom: 0.375em; }
-  
+
   label.required::after {
     content: "*"; }
-  
+
   label abbr {
     display: none; }
 
@@ -2435,12 +2500,12 @@ textarea {
   padding: 0.5em;
   transition: border-color;
   width: 100%; }
-  
+
   input[type="email"]:hover, input[type="number"]:hover, input[type="password"]:hover, input[type="search"]:hover, input[type="tel"]:hover, input[type="text"]:hover, input[type="url"]:hover, input[type="color"]:hover, input[type="date"]:hover, input[type="datetime"]:hover, input[type="datetime-local"]:hover, input[type="month"]:hover, input[type="time"]:hover, input[type="week"]:hover,
   select[multiple=multiple]:hover,
   textarea:hover {
     border-color: #c4c4c4; }
-  
+
   input[type="email"]:focus, input[type="number"]:focus, input[type="password"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="text"]:focus, input[type="url"]:focus, input[type="color"]:focus, input[type="date"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="month"]:focus, input[type="time"]:focus, input[type="week"]:focus,
   select[multiple=multiple]:focus,
   textarea:focus {
@@ -2486,11 +2551,11 @@ ol {
 
 dl {
   margin-bottom: 0.75em; }
-  
+
   dl dt {
     font-weight: bold;
     margin-top: 0.75em; }
-  
+
   dl dd {
     margin: 0; }
 
@@ -2556,10 +2621,10 @@ a {
   color: #477dca;
   text-decoration: none;
   transition: color 0.1s linear; }
-  
+
   a:active, a:focus, a:hover {
     color: #2c5999; }
-  
+
   a:active, a:focus {
     outline: none; }
 
@@ -2637,7 +2702,7 @@ body {
   height: 35rem;
   margin: 0 auto;
   position: relative; }
-  
+
   #section0 #main-box #start-business {
     -webkit-transform: translateY(-50%);
     -moz-transform: translateY(-50%);
@@ -2656,10 +2721,10 @@ body {
     position: absolute;
     opacity: 0.8;
     left: 7%; }
-    
+
     #section0 #main-box #start-business:hover {
       opacity: 1; }
-    
+
     #section0 #main-box #start-business .text {
       -webkit-transform: translateY(-50%);
       -moz-transform: translateY(-50%);
@@ -2668,18 +2733,18 @@ body {
       transform: translateY(-50%);
       position: relative;
       top: 50%; }
-      
+
       #section0 #main-box #start-business .text h1,
       #section0 #main-box #start-business .text h3 {
         color: #FFFFFF; }
-      
+
       #section0 #main-box #start-business .text h1 {
         font-weight: bold;
         font-size: 1.75rem; }
-      
+
       #section0 #main-box #start-business .text h3 {
         font-size: 1.25rem; }
-  
+
   #section0 #main-box #find-job {
     -webkit-transform: translateY(-50%);
     -moz-transform: translateY(-50%);
@@ -2700,10 +2765,10 @@ body {
     left: 75%;
     top: 15%;
     z-index: 1; }
-    
+
     #section0 #main-box #find-job:hover {
       opacity: 1; }
-    
+
     #section0 #main-box #find-job .text {
       -webkit-transform: translateY(-50%);
       -moz-transform: translateY(-50%);
@@ -2712,18 +2777,18 @@ body {
       transform: translateY(-50%);
       position: relative;
       top: 50%; }
-      
+
       #section0 #main-box #find-job .text h1,
       #section0 #main-box #find-job .text h3 {
         color: #FFFFFF; }
-      
+
       #section0 #main-box #find-job .text h1 {
         font-weight: bold;
         font-size: 1.75rem; }
-      
+
       #section0 #main-box #find-job .text h3 {
         font-size: 1.25rem; }
-  
+
   #section0 #main-box #help-business {
     -webkit-transform: translateY(-50%);
     -moz-transform: translateY(-50%);
@@ -2743,10 +2808,10 @@ body {
     opacity: 0.8;
     left: 75%;
     top: 85%; }
-    
+
     #section0 #main-box #help-business:hover {
       opacity: 1; }
-    
+
     #section0 #main-box #help-business .text {
       -webkit-transform: translateY(-50%);
       -moz-transform: translateY(-50%);
@@ -2755,20 +2820,20 @@ body {
       transform: translateY(-50%);
       position: relative;
       top: 50%; }
-      
+
       #section0 #main-box #help-business .text h1,
       #section0 #main-box #help-business .text h3 {
         color: #FFFFFF; }
-      
+
       #section0 #main-box #help-business .text h1 {
         font-weight: bold;
         font-size: 1.75rem; }
-      
+
       #section0 #main-box #help-business .text h3 {
         font-size: 1.25rem; }
 
 @media (max-width: 1366px) {
-  
+
   #section0:before {
     content: "";
     display: block;
@@ -2780,13 +2845,13 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center; }
-  
+
   #section0 #main-box {
     max-width: 35rem;
     height: 35rem;
     margin: 0 auto;
     position: relative; }
-    
+
     #section0 #main-box #start-business {
       -webkit-transform: translateY(-50%);
       -moz-transform: translateY(-50%);
@@ -2805,10 +2870,10 @@ body {
       position: absolute;
       opacity: 0.8;
       left: 18%; }
-      
+
       #section0 #main-box #start-business:hover {
         opacity: 1; }
-      
+
       #section0 #main-box #start-business .text {
         -webkit-transform: translateY(-50%);
         -moz-transform: translateY(-50%);
@@ -2817,18 +2882,18 @@ body {
         transform: translateY(-50%);
         position: relative;
         top: 50%; }
-        
+
         #section0 #main-box #start-business .text h1,
         #section0 #main-box #start-business .text h3 {
           color: #FFFFFF; }
-        
+
         #section0 #main-box #start-business .text h1 {
           font-weight: bold;
           font-size: 1.25rem; }
-        
+
         #section0 #main-box #start-business .text h3 {
           font-size: 1rem; }
-    
+
     #section0 #main-box #find-job {
       -webkit-transform: translateY(-50%);
       -moz-transform: translateY(-50%);
@@ -2848,10 +2913,10 @@ body {
       opacity: 0.8;
       left: 66%;
       top: 22%; }
-      
+
       #section0 #main-box #find-job:hover {
         opacity: 1; }
-      
+
       #section0 #main-box #find-job .text {
         -webkit-transform: translateY(-50%);
         -moz-transform: translateY(-50%);
@@ -2860,18 +2925,18 @@ body {
         transform: translateY(-50%);
         position: relative;
         top: 50%; }
-        
+
         #section0 #main-box #find-job .text h1,
         #section0 #main-box #find-job .text h3 {
           color: #FFFFFF; }
-        
+
         #section0 #main-box #find-job .text h1 {
           font-weight: bold;
           font-size: 1.25rem; }
-        
+
         #section0 #main-box #find-job .text h3 {
           font-size: 1rem; }
-    
+
     #section0 #main-box #help-business {
       -webkit-transform: translateY(-50%);
       -moz-transform: translateY(-50%);
@@ -2891,10 +2956,10 @@ body {
       opacity: 0.8;
       left: 66%;
       top: 74%; }
-      
+
       #section0 #main-box #help-business:hover {
         opacity: 1; }
-      
+
       #section0 #main-box #help-business .text {
         -webkit-transform: translateY(-50%);
         -moz-transform: translateY(-50%);
@@ -2903,19 +2968,19 @@ body {
         transform: translateY(-50%);
         position: relative;
         top: 50%; }
-        
+
         #section0 #main-box #help-business .text h1,
         #section0 #main-box #help-business .text h3 {
           color: #FFFFFF; }
-        
+
         #section0 #main-box #help-business .text h1 {
           font-weight: bold;
           font-size: 1.25rem; }
-        
+
         #section0 #main-box #help-business .text h3 {
           font-size: 1rem; } }
 @media (max-width: 1282px) {
-  
+
   #section0:before {
     content: "";
     display: block;
@@ -2927,13 +2992,13 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center; }
-  
+
   #section0 #main-box {
     max-width: 35rem;
     height: 35rem;
     margin: 0 auto;
     position: relative; }
-    
+
     #section0 #main-box #start-business {
       -webkit-transform: translateY(-50%);
       -moz-transform: translateY(-50%);
@@ -2952,10 +3017,10 @@ body {
       position: absolute;
       opacity: 0.8;
       left: 21%; }
-      
+
       #section0 #main-box #start-business:hover {
         opacity: 1; }
-      
+
       #section0 #main-box #start-business .text {
         -webkit-transform: translateY(-50%);
         -moz-transform: translateY(-50%);
@@ -2964,18 +3029,18 @@ body {
         transform: translateY(-50%);
         position: relative;
         top: 50%; }
-        
+
         #section0 #main-box #start-business .text h1,
         #section0 #main-box #start-business .text h3 {
           color: #FFFFFF; }
-        
+
         #section0 #main-box #start-business .text h1 {
           font-weight: bold;
           font-size: 1.25rem; }
-        
+
         #section0 #main-box #start-business .text h3 {
           font-size: 1rem; }
-    
+
     #section0 #main-box #find-job {
       -webkit-transform: translateY(-50%);
       -moz-transform: translateY(-50%);
@@ -2995,10 +3060,10 @@ body {
       opacity: 0.8;
       left: 64%;
       top: 26%; }
-      
+
       #section0 #main-box #find-job:hover {
         opacity: 1; }
-      
+
       #section0 #main-box #find-job .text {
         -webkit-transform: translateY(-50%);
         -moz-transform: translateY(-50%);
@@ -3007,18 +3072,18 @@ body {
         transform: translateY(-50%);
         position: relative;
         top: 50%; }
-        
+
         #section0 #main-box #find-job .text h1,
         #section0 #main-box #find-job .text h3 {
           color: #FFFFFF; }
-        
+
         #section0 #main-box #find-job .text h1 {
           font-weight: bold;
           font-size: 1.25rem; }
-        
+
         #section0 #main-box #find-job .text h3 {
           font-size: 1rem; }
-    
+
     #section0 #main-box #help-business {
       -webkit-transform: translateY(-50%);
       -moz-transform: translateY(-50%);
@@ -3038,10 +3103,10 @@ body {
       opacity: 0.8;
       left: 64%;
       top: 75%; }
-      
+
       #section0 #main-box #help-business:hover {
         opacity: 1; }
-      
+
       #section0 #main-box #help-business .text {
         -webkit-transform: translateY(-50%);
         -moz-transform: translateY(-50%);
@@ -3050,19 +3115,19 @@ body {
         transform: translateY(-50%);
         position: relative;
         top: 50%; }
-        
+
         #section0 #main-box #help-business .text h1,
         #section0 #main-box #help-business .text h3 {
           color: #FFFFFF; }
-        
+
         #section0 #main-box #help-business .text h1 {
           font-weight: bold;
           font-size: 1.25rem; }
-        
+
         #section0 #main-box #help-business .text h3 {
           font-size: 1rem; } }
 @media (max-width: 1282px) {
-  
+
   #section0:before {
     content: "";
     display: block;
@@ -3074,13 +3139,13 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center; }
-  
+
   #section0 #main-box {
     max-width: 35rem;
     height: 35rem;
     margin: 0 auto;
     position: relative; }
-    
+
     #section0 #main-box #start-business {
       -webkit-transform: translateY(-50%);
       -moz-transform: translateY(-50%);
@@ -3099,10 +3164,10 @@ body {
       position: absolute;
       opacity: 0.8;
       left: 24%; }
-      
+
       #section0 #main-box #start-business:hover {
         opacity: 1; }
-      
+
       #section0 #main-box #start-business .text {
         -webkit-transform: translateY(-50%);
         -moz-transform: translateY(-50%);
@@ -3111,18 +3176,18 @@ body {
         transform: translateY(-50%);
         position: relative;
         top: 50%; }
-        
+
         #section0 #main-box #start-business .text h1,
         #section0 #main-box #start-business .text h3 {
           color: #FFFFFF; }
-        
+
         #section0 #main-box #start-business .text h1 {
           font-weight: bold;
           font-size: 1.05rem; }
-        
+
         #section0 #main-box #start-business .text h3 {
           font-size: 0.9rem; }
-    
+
     #section0 #main-box #find-job {
       -webkit-transform: translateY(-50%);
       -moz-transform: translateY(-50%);
@@ -3142,10 +3207,10 @@ body {
       opacity: 0.8;
       left: 61%;
       top: 28%; }
-      
+
       #section0 #main-box #find-job:hover {
         opacity: 1; }
-      
+
       #section0 #main-box #find-job .text {
         -webkit-transform: translateY(-50%);
         -moz-transform: translateY(-50%);
@@ -3154,18 +3219,18 @@ body {
         transform: translateY(-50%);
         position: relative;
         top: 50%; }
-        
+
         #section0 #main-box #find-job .text h1,
         #section0 #main-box #find-job .text h3 {
           color: #FFFFFF; }
-        
+
         #section0 #main-box #find-job .text h1 {
           font-weight: bold;
           font-size: 1.05rem; }
-        
+
         #section0 #main-box #find-job .text h3 {
           font-size: 0.9rem; }
-    
+
     #section0 #main-box #help-business {
       -webkit-transform: translateY(-50%);
       -moz-transform: translateY(-50%);
@@ -3185,10 +3250,10 @@ body {
       opacity: 0.8;
       left: 61%;
       top: 74%; }
-      
+
       #section0 #main-box #help-business:hover {
         opacity: 1; }
-      
+
       #section0 #main-box #help-business .text {
         -webkit-transform: translateY(-50%);
         -moz-transform: translateY(-50%);
@@ -3197,19 +3262,19 @@ body {
         transform: translateY(-50%);
         position: relative;
         top: 50%; }
-        
+
         #section0 #main-box #help-business .text h1,
         #section0 #main-box #help-business .text h3 {
           color: #FFFFFF; }
-        
+
         #section0 #main-box #help-business .text h1 {
           font-weight: bold;
           font-size: 1.05rem; }
-        
+
         #section0 #main-box #help-business .text h3 {
           font-size: 0.9rem; } }
 @media (max-width: 640px) {
-  
+
   #section0:before {
     content: "";
     display: block;
@@ -3221,13 +3286,13 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center; }
-  
+
   #section0 #main-box {
     max-width: 35rem;
     height: 35rem;
     margin: 0 auto;
     position: relative; }
-    
+
     #section0 #main-box #start-business {
       -webkit-transform: translateY(-50%);
       -moz-transform: translateY(-50%);
@@ -3246,10 +3311,10 @@ body {
       position: absolute;
       opacity: 0.8;
       left: 27%; }
-      
+
       #section0 #main-box #start-business:hover {
         opacity: 1; }
-      
+
       #section0 #main-box #start-business .text {
         -webkit-transform: translateY(-50%);
         -moz-transform: translateY(-50%);
@@ -3258,18 +3323,18 @@ body {
         transform: translateY(-50%);
         position: relative;
         top: 50%; }
-        
+
         #section0 #main-box #start-business .text h1,
         #section0 #main-box #start-business .text h3 {
           color: #FFFFFF; }
-        
+
         #section0 #main-box #start-business .text h1 {
           font-weight: bold;
           font-size: 0.95rem; }
-        
+
         #section0 #main-box #start-business .text h3 {
           font-size: 0.85rem; }
-    
+
     #section0 #main-box #find-job {
       -webkit-transform: translateY(-50%);
       -moz-transform: translateY(-50%);
@@ -3289,10 +3354,10 @@ body {
       opacity: 0.8;
       left: 62%;
       top: 33%; }
-      
+
       #section0 #main-box #find-job:hover {
         opacity: 1; }
-      
+
       #section0 #main-box #find-job .text {
         -webkit-transform: translateY(-50%);
         -moz-transform: translateY(-50%);
@@ -3301,18 +3366,18 @@ body {
         transform: translateY(-50%);
         position: relative;
         top: 50%; }
-        
+
         #section0 #main-box #find-job .text h1,
         #section0 #main-box #find-job .text h3 {
           color: #FFFFFF; }
-        
+
         #section0 #main-box #find-job .text h1 {
           font-weight: bold;
           font-size: 0.95rem; }
-        
+
         #section0 #main-box #find-job .text h3 {
           font-size: 0.85rem; }
-    
+
     #section0 #main-box #help-business {
       -webkit-transform: translateY(-50%);
       -moz-transform: translateY(-50%);
@@ -3332,10 +3397,10 @@ body {
       opacity: 0.8;
       left: 62%;
       top: 71%; }
-      
+
       #section0 #main-box #help-business:hover {
         opacity: 1; }
-      
+
       #section0 #main-box #help-business .text {
         -webkit-transform: translateY(-50%);
         -moz-transform: translateY(-50%);
@@ -3344,19 +3409,19 @@ body {
         transform: translateY(-50%);
         position: relative;
         top: 50%; }
-        
+
         #section0 #main-box #help-business .text h1,
         #section0 #main-box #help-business .text h3 {
           color: #FFFFFF; }
-        
+
         #section0 #main-box #help-business .text h1 {
           font-weight: bold;
           font-size: 0.95rem; }
-        
+
         #section0 #main-box #help-business .text h3 {
           font-size: 0.85rem; } }
 @media (max-width: 480px) {
-  
+
   #section0:before {
     content: "";
     display: block;
@@ -3368,7 +3433,7 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center; }
-  
+
   #section0 #main-box {
     -webkit-transform: translateY(-50%);
     -moz-transform: translateY(-50%);
@@ -3381,7 +3446,7 @@ body {
     height: 45rem;
     margin: 0 auto;
     position: relative; }
-    
+
     #section0 #main-box #start-business {
       -webkit-transform: translateY(-50%);
       -moz-transform: translateY(-50%);
@@ -3404,10 +3469,10 @@ body {
       margin-left: auto;
       margin-right: auto;
       top: 30%; }
-      
+
       #section0 #main-box #start-business:hover {
         opacity: 1; }
-      
+
       #section0 #main-box #start-business .text {
         -webkit-transform: translateY(-50%);
         -moz-transform: translateY(-50%);
@@ -3416,18 +3481,18 @@ body {
         transform: translateY(-50%);
         position: relative;
         top: 50%; }
-        
+
         #section0 #main-box #start-business .text h1,
         #section0 #main-box #start-business .text h3 {
           color: #FFFFFF; }
-        
+
         #section0 #main-box #start-business .text h1 {
           font-weight: bold;
           font-size: 0.95rem; }
-        
+
         #section0 #main-box #start-business .text h3 {
           font-size: 0.85rem; }
-    
+
     #section0 #main-box #find-job {
       -webkit-transform: translateY(-50%);
       -moz-transform: translateY(-50%);
@@ -3450,10 +3515,10 @@ body {
       margin-left: auto;
       margin-right: auto;
       top: 50%; }
-      
+
       #section0 #main-box #find-job:hover {
         opacity: 1; }
-      
+
       #section0 #main-box #find-job .text {
         -webkit-transform: translateY(-50%);
         -moz-transform: translateY(-50%);
@@ -3462,18 +3527,18 @@ body {
         transform: translateY(-50%);
         position: relative;
         top: 50%; }
-        
+
         #section0 #main-box #find-job .text h1,
         #section0 #main-box #find-job .text h3 {
           color: #FFFFFF; }
-        
+
         #section0 #main-box #find-job .text h1 {
           font-weight: bold;
           font-size: 0.95rem; }
-        
+
         #section0 #main-box #find-job .text h3 {
           font-size: 0.85rem; }
-    
+
     #section0 #main-box #help-business {
       -webkit-transform: translateY(-50%);
       -moz-transform: translateY(-50%);
@@ -3496,10 +3561,10 @@ body {
       margin-left: auto;
       margin-right: auto;
       top: 70%; }
-      
+
       #section0 #main-box #help-business:hover {
         opacity: 1; }
-      
+
       #section0 #main-box #help-business .text {
         -webkit-transform: translateY(-50%);
         -moz-transform: translateY(-50%);
@@ -3508,15 +3573,15 @@ body {
         transform: translateY(-50%);
         position: relative;
         top: 50%; }
-        
+
         #section0 #main-box #help-business .text h1,
         #section0 #main-box #help-business .text h3 {
           color: #FFFFFF; }
-        
+
         #section0 #main-box #help-business .text h1 {
           font-weight: bold;
           font-size: 0.95rem; }
-        
+
         #section0 #main-box #help-business .text h3 {
           font-size: 0.85rem; } }
 
@@ -3540,12 +3605,12 @@ body {
   margin-right: auto;
   height: auto;
   overflow: hidden; }
-  
+
   #section1 .awesome-form::after {
     clear: both;
     content: "";
     display: table; }
-  
+
   #section1 .awesome-form input,
   #section1 .awesome-form label {
     width: 100%;
@@ -3554,11 +3619,11 @@ body {
     width: 100%;
     font-family: helvetica;
     font-size: 18px; }
-  
+
   #section1 .awesome-form .input-group {
     position: relative;
     width: 100%; }
-  
+
   #section1 .awesome-form input {
     background: transparent;
     border: 0;
@@ -3568,16 +3633,16 @@ body {
     border-radius: 0;
     padding: 0.3rem 0.5rem 0.3rem 0.5rem;
     font-family: helvetica; }
-    
+
     #section1 .awesome-form input:focus ~ label, #section1 .awesome-form input:valid ~ label {
       top: 0;
       font-size: 1.5rem;
       color: #FFFFFF; }
       @media (max-width: 480px) {
-        
+
         #section1 .awesome-form input:focus ~ label, #section1 .awesome-form input:valid ~ label {
           font-size: 1rem; } }
-  
+
   #section1 .awesome-form label {
     position: absolute;
     top: 50%;
@@ -3592,7 +3657,7 @@ body {
     -webkit-transition: all 0.5s;
     -moz-transition: all 0.5s;
     transition: all 0.5s; }
-  
+
   #section1 .awesome-form input[type="submit"] {
     padding: 20px;
     margin: 0 auto;
@@ -3604,25 +3669,25 @@ body {
     -webkit-transition: all 0.5s;
     -moz-transition: all 0.5s;
     transition: all 0.5s; }
-    
+
     #section1 .awesome-form input[type="submit"]:hover {
       background: #FFFFFF;
       color: #F36523; }
 
 @media (max-width: 1024px) {
-  
+
   #section1 .awesome-form label {
     font-size: 2.5rem; } }
 @media (max-width: 768px) {
-  
+
   #section1 .awesome-form label {
     font-size: 2rem; } }
 @media (max-width: 640px) {
-  
+
   #section1 .awesome-form label {
     font-size: 1.5rem; } }
 @media (max-width: 480px) {
-  
+
   #section1 .awesome-form label {
     font-size: 1.25rem; } }
 
@@ -3634,45 +3699,45 @@ body {
   margin: 0 auto;
   height: 100%; }
   @media only screen and (min-width: 770px) {
-    
+
     .results {
       background-color: #009ACC;
       height: 100%;
       width: 55%;
       opacity: 0.95; } }
-  
+
   .results .results-text {
     text-align: justify;
     padding: 0 2rem; }
-    
+
     .results .results-text h1 {
       color: #FFFFFF;
       font-size: 3.5rem;
       font-family: helvetica;
       padding: 0;
       margin: 0; }
-    
+
     .results .results-text h2 {
       color: #FFFFFF;
       font-size: 2.8rem;
       font-family: helvetica;
       padding: 0;
       margin: 0; }
-    
+
     .results .results-text h3 {
       color: #FFFFFF;
       font-size: 2.1rem;
       font-family: helvetica;
       padding: 0;
       margin: 0; }
-    
+
     .results .results-text h4 {
       color: #FFFFFF;
       font-size: 1.4rem;
       font-family: helvetica;
       padding: 0;
       margin: 0; }
-    
+
     .results .results-text p {
       color: #FFFFFF;
       font-size: 1.2rem;
@@ -3705,7 +3770,7 @@ body {
 #section2 .results .results-text {
   margin: 0 auto;
   width: 85%; }
-  
+
   #section2 .results .results-text h4 {
     padding-top: 1rem; }
 
@@ -3715,13 +3780,13 @@ body {
   bottom: 3%;
   right: 3%;
   z-index: 999; }
-  
+
   #search-icon a {
     -webkit-transition: all 0.5s;
     -moz-transition: all 0.5s;
     transition: all 0.5s;
     color: #FFFFFF; }
-    
+
     #search-icon a:hover {
       color: #EC9F45;
       -ms-transform: scale(1.2);
