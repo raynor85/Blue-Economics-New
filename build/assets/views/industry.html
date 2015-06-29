@@ -2,7 +2,7 @@
     <form action='' class='awesome-form' method='get' ng-submit="vm.ask()">
         <div class='input-group'>
             <input required='required' type='text' ng-model="vm.industry" ng-change="vm.getIndustries()"
-                   ng-model-options="{debounce:500}">
+                   ng-model-options="{debounce:250}">
             <label for=''>
                 What industry are you interested in?
             </label>
