@@ -8,3 +8,7 @@ window.jQuery = require('jquery');
 require('../jquery-ui.min');
 require('../vendor/jquery.fullPage');
 require('../vendor/jquery.slimscroll');
+
+var angular   = require('angular');
+var uiRouter  = require('angular-ui-router');
+var ngAnimate = require('angular-animate');

@@ -1,8 +1,10 @@
-var gulp    = require('gulp');
-var webpack = require('gulp-webpack');
-var uglify  = require('gulp-uglify');
-var jshint  = require('gulp-jshint');
-var stylish = require('jshint-stylish');
+var gulp             = require('gulp');
+var webpack          = require('webpack');
+var uglify           = require('gulp-uglify');
+var jshint           = require('gulp-jshint');
+var stylish          = require('jshint-stylish');
+var gutil            = require('gulp-util');
+var ngAnnotatePlugin = require('ng-annotate-webpack-plugin');
 
 
 var app = {
@@ -31,20 +33,44 @@ gulp.task('jshint',
  */
 gulp.task('webpack',
     ['jshint'],
-    function () {
-        return gulp.src(app.js.index)
-            .pipe(webpack({
+    // run webpack
+    function (cb) {
+        webpack({
+                context: __dirname + '/assets/javascripts/src',
+                entry  : {
+                    app   : './index.js',
+                    vendor: './vendor.js'
+                },
                 output : {
+                    path    : app.js.out,
                     filename: app.js.file
                 },
                 resolve: {
                     alias: {
                         'jquery': 'jquery/dist/jquery.min.js'
                     }
-                }
-            }))
-            .pipe(uglify())
-            .pipe(gulp.dest(app.js.out));
+                },
+                module : {
+                    loaders: [
+                        { test: /\.html$/, loader: 'html-loader' }
+                    ]
+                },
+                plugins: [
+                    new webpack.optimize.CommonsChunkPlugin(/* chunkName= */"vendor", /* filename= */"vendor.bundle.js"),
+                    new ngAnnotatePlugin({
+                        add: true
+                    }),
+                    //new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } })
+                ]
+            },
+            function (err, stats) {
+                if (err) throw new gutil.PluginError("webpack", err);
+                gutil.log("[webpack]", stats.toString({
+                    // output options
+                }));
+                cb();
+            }
+        );
     });
 
 
