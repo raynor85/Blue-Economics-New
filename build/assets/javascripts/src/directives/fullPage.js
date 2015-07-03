@@ -2,6 +2,8 @@
  * Created by john on 6/28/15.
  */
 
+'use strict';
+
 var $ = require('jquery');
 
 /**

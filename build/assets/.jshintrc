@@ -1,0 +1,8 @@
+{
+  "undef": true,
+  "unused": true,
+  "globalstrict": true,
+  "browserify": true,
+  "globals": [
+  ]
+}

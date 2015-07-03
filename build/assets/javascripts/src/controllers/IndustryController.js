@@ -2,20 +2,23 @@
  * Created by john on 6/28/15.
  */
 
+'use strict';
+
 /**
- *
- * @param $scope
+ * Controller for the 'What industry' page
+ * @param $state
  * @param blueEconomics - The Blue Economics API
  * @constructor
+ * @ngInject
  */
-function IndustryController($scope, $state, blueEconomics) {
+function IndustryController($state, blueEconomics) {
 
     var self = this;
 
     this.ask           = ask;
     this.industry      = '';
     this.getIndustries = getIndustries;
-    this.searchResults = ['test1', 'test2', 'test3'];
+    this.searchResults = [];
 
 
     /**
@@ -31,9 +34,8 @@ function IndustryController($scope, $state, blueEconomics) {
      */
     function getIndustries() {
         blueEconomics.search(self.industry || '')
-            .done(function (data) {
+            .then(function (data) {
                 self.searchResults = data.industries;
-                $scope.$apply();    // TODO: remove this later, it's necessary because we're using jquery deferred instead of angular promise
             });
     }
 }
