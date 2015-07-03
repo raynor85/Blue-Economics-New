@@ -276,13 +276,13 @@ var blueEconomics = (function ($) {
      @returns        {Function} - even if called multiple times in immediate succession, will only return the promise
      corresponding to the currently executing search.
      */
-    function getDebouncedSearch(duration) {
+    function getDebouncedSearch(self, duration) {
 
         function search(query) {
             var url      = '/search/:' + query,
                 deferred = $.Deferred();
 
-            deferredRequest(this, deferred, url, { type: 'GET', dataType: 'json' });
+            deferredRequest(self, deferred, url, { type: 'GET', dataType: 'json' });
 
             return deferred.promise();
         }
@@ -303,12 +303,10 @@ var blueEconomics = (function ($) {
         this.questions      = new Questions(args);
         this.workExperience = new WorkExperience(args);
 
-        this.search = getDebouncedSearch();
+        this.search = getDebouncedSearch(this);
     }
 
-    // TODO: do we want to return an instance, or a constructor function?
     return new BlueEconomics();
-
 
 })($);
 

@@ -6,12 +6,12 @@
 
 /**
  * Controller for the 'What industry' page
- * @param $scope
- * @param $search
+ * @param $state
  * @param blueEconomics - The Blue Economics API
  * @constructor
+ * @ngInject
  */
-function IndustryController($scope, $state, blueEconomics) {
+function IndustryController($state, blueEconomics) {
 
     var self = this;
 
@@ -34,9 +34,8 @@ function IndustryController($scope, $state, blueEconomics) {
      */
     function getIndustries() {
         blueEconomics.search(self.industry || '')
-            .done(function (data) {
+            .then(function (data) {
                 self.searchResults = data.industries;
-                $scope.$apply();    // TODO: remove this later, it's necessary because we're using jquery deferred instead of angular promise
             });
     }
 }

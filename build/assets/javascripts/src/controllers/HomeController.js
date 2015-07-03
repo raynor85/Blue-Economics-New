@@ -8,6 +8,7 @@
  * Controller for the initial page.
  * @param $scope
  * @constructor
+ * @ngInject
  */
 function HomeController($scope) {
 
