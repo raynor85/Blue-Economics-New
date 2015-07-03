@@ -3625,6 +3625,7 @@ body {
     width: 100%; }
 
   #section1 .awesome-form input {
+    outline: none;
     background: transparent;
     border: 0;
     border-bottom: 2px solid #FFFFFF;

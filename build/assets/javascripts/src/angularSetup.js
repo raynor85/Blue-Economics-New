@@ -2,6 +2,8 @@
  * Created by john on 6/27/15.
  */
 
+'use strict';
+
 var angular   = require('angular');
 var uiRouter  = require('angular-ui-router');
 var ngAnimate = require('angular-animate');
