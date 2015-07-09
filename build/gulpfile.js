@@ -61,7 +61,7 @@ gulp.task('webpack',
                     new ngAnnotatePlugin({
                         add : true
                     }),
-                    //new webpack.optimize.UglifyJsPlugin({ compress : { warnings : false } })
+                    new webpack.optimize.UglifyJsPlugin({ compress : { warnings : false } })
                 ]
             },
             function (err, stats) {
