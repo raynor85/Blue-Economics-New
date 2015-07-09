@@ -18,22 +18,22 @@ function stateConfig($stateProvider, $urlRouterProvider) {
 
     $stateProvider
         .state('home', {
-            url         : '/',
-            template    : require('../../views/home.html'),
-            controller  : 'HomeController',
-            controllerAs: 'vm'
+            url          : '/',
+            template     : require('../../views/home.html'),
+            controller   : 'HomeController',
+            controllerAs : 'vm'
         })
         .state('industry', {
-            url         : '/industry',
-            template    : require('../../views/industry.html'),
-            controller  : 'IndustryController',
-            controllerAs: 'vm'
+            url          : '/industry',
+            template     : require('../../views/industry.html'),
+            controller   : 'IndustryController',
+            controllerAs : 'vm'
         })
         .state('queryResults', {
-            url         : '/results',
-            template    : require('../../views/queryResults.html'),
-            controller  : 'QueryResultsController',
-            controllerAs: 'vm'
+            url          : '/results',
+            template     : require('../../views/queryResults.html'),
+            controller   : 'QueryResultsController',
+            controllerAs : 'vm'
         });
 
     $urlRouterProvider.otherwise('/');
@@ -53,5 +53,6 @@ module.exports = function initAngular() {
         .controller('IndustryController', require('./controllers/IndustryController'))
         .controller('QueryResultsController', require('./controllers/QueryResultsController'))
         .factory('blueEconomics', require('./services/blueEconomics'))
-        .directive('fullPage', require('./directives/fullPage'));
+        .directive('fullPage', require('./directives/fullPage'))
+        .directive('scaleDisplayList', require('./directives/scaleDisplayList'));
 };
