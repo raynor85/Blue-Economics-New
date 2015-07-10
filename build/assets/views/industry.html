@@ -7,8 +7,8 @@
                 What industry are you interested in?
             </label>
         </div>
-        <ul ng-if="vm.searchResults.length > 0">
-            <li ng-repeat="result in vm.searchResults">
+        <ul scale-display-list class="results-list" ng-if="vm.searchResults.length > 0">
+            <li class="results-list-item" ng-repeat="result in vm.searchResults track by result.id">
                 {{result.name}}
             </li>
         </ul>
