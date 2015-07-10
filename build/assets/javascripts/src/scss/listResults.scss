@@ -5,14 +5,15 @@
 $item-height: 1em;
 $line-height: $item-height * 1.5;
 $selected-item-height: 1.5em;
+$background-color: #F36523;
 
 .results-list {
   color: white;
   width: 90%;
-  margin: auto;
   max-height: $line-height * 5;
   overflow-y: auto;
-  margin-bottom: 20px;
+  margin: 20px auto;
+  border: 1px solid white;
 }
 
 .results-list-item {
@@ -26,12 +27,15 @@ $selected-item-height: 1.5em;
   border-top: 1px solid white;
   border-bottom: 1px solid white;
   font-size: $selected-item-height;
+  background-color: lighten($background-color, 10%);
 }
 
 .level-1 {
   font-size: $selected-item-height * 0.8;
+  opacity: 0.8;
 }
 
 .level-2 {
   font-size: $selected-item-height * 0.8 * 0.8;
+  opacity: 0.8 * 0.8;
 }
