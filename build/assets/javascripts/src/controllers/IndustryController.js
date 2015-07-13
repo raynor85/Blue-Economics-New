@@ -18,6 +18,7 @@ function IndustryController($state, blueEconomics) {
     this.ask           = ask;
     this.industry      = '';
     this.getIndustries = getIndustries;
+    this.getJobs       = getJobs;
     this.searchResults = [];
 
 
@@ -35,15 +36,22 @@ function IndustryController($state, blueEconomics) {
     function getIndustries() {
         blueEconomics.search(self.industry || '')
             .then(function (data) {
+                self.searchResults = data.industries;
+            });
+    }
 
-                //FIXME: this is only temporary since we get back one result from the back end - clone it a bunch of times to make some data to show in the list
-                var testData = data.industries.concat(data.industries).concat(data.industries).concat(data.industries).concat(data.industries).concat(data.industries).concat(data.industries).concat(data.industries);
-                for (var i = 0; i < testData.length; i++) {
-                    testData[i] = angular.extend({}, testData[i], { id : i });
-                }
-                self.searchResults = testData;
-
-                //self.searchResults = data.industries;
+    /**
+     * Gets a list of jobs for the specified industry.
+     * @param industry
+     */
+    function getJobs(industry) {
+        console.log(industry);
+        blueEconomics.jobs.getByIndustry(industry)
+            .then(function (data) {
+                $state.go('jobsByIndustry', { jobs: data });
+            })
+            .catch(function (err) {
+                console.log(err);
             });
     }
 }
