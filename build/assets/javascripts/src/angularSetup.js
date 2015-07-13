@@ -18,22 +18,34 @@ function stateConfig($stateProvider, $urlRouterProvider) {
 
     $stateProvider
         .state('home', {
-            url          : '/',
-            template     : require('../../views/home.html'),
-            controller   : 'HomeController',
-            controllerAs : 'vm'
+            url         : '/',
+            template    : require('../../views/home.html'),
+            controller  : 'HomeController',
+            controllerAs: 'vm'
         })
         .state('industry', {
-            url          : '/industry',
-            template     : require('../../views/industry.html'),
-            controller   : 'IndustryController',
-            controllerAs : 'vm'
+            url         : '/industry',
+            template    : require('../../views/industry.html'),
+            controller  : 'IndustryController',
+            controllerAs: 'vm'
+        })
+        .state('jobsByIndustry', {
+            params      : { jobs: null },
+            url         : '/jobsByIndustry',
+            template    : require('../../views/jobsByIndustry.html'),
+            controller  : 'JobsByIndustryController',
+            controllerAs: 'vm',
+            resolve     : {
+                'jobs': /**@ngInject*/function ($stateParams) {
+                    return $stateParams.jobs;
+                }
+            }
         })
         .state('queryResults', {
-            url          : '/results',
-            template     : require('../../views/queryResults.html'),
-            controller   : 'QueryResultsController',
-            controllerAs : 'vm'
+            url         : '/results',
+            template    : require('../../views/queryResults.html'),
+            controller  : 'QueryResultsController',
+            controllerAs: 'vm'
         });
 
     $urlRouterProvider.otherwise('/');
@@ -51,6 +63,7 @@ module.exports = function initAngular() {
     angular.module('app')
         .controller('HomeController', require('./controllers/HomeController'))
         .controller('IndustryController', require('./controllers/IndustryController'))
+        .controller('JobsByIndustryController', require('./controllers/JobsByIndustryController'))
         .controller('QueryResultsController', require('./controllers/QueryResultsController'))
         .factory('blueEconomics', require('./services/blueEconomics'))
         .directive('fullPage', require('./directives/fullPage'))
