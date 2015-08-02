@@ -171,6 +171,17 @@ function blueEconomics($http, $q) {
     };
 
 
+    function JobDescription() {
+        BaseQuery.call(this, 'job_description', {});
+    }
+
+    JobDescription.prototype.get = function(jobName) {
+        var url = this.url + '?' + jobName.replace(' ', '%20');
+        var request = deferredRequest(this, url, {});
+        return request;
+    };
+
+
     /**
      @description    GET /workexperience
      GET /workexperience/:id
@@ -287,11 +298,12 @@ function blueEconomics($http, $q) {
     function BlueEconomics(args) {
         args = args || {};
 
-        this.industries     = new Industries(args);
-        this.jobs           = new Jobs(args);
-        this.occupations    = new Occupations(args);
-        this.questions      = new Questions(args);
-        this.workExperience = new WorkExperience(args);
+        this.industries      = new Industries(args);
+        this.jobs            = new Jobs(args);
+        this.jobDescriptions = new JobDescription(args);
+        this.occupations     = new Occupations(args);
+        this.questions       = new Questions(args);
+        this.workExperience  = new WorkExperience(args);
 
         this.search = getDebouncedSearch(this);
     }
