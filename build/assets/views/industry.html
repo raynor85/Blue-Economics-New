@@ -8,7 +8,9 @@
             </label>
         </div>
         <ul scale-display-list class="results-list" ng-if="vm.searchResults.length > 0">
-            <li class="results-list-item" ng-repeat="result in vm.searchResults track by result.id">
+            <li class="results-list-item"
+                ng-repeat="result in vm.searchResults track by result.id"
+                ng-click="vm.getJobs(result)">
                 {{result.name}}
             </li>
         </ul>

@@ -10,33 +10,33 @@ var angular = require('angular');
  * Blue Economics API service
  * @description     USAGE:
 
-                     blueEconomics.industries.get();
-                     blueEconomics.industries.filter({ text: '', cached: false });
+ blueEconomics.industries.get();
+ blueEconomics.industries.filter({ text: '', cached: false });
 
-                     blueEconomics.jobs.get();
-                     .. etc
+ blueEconomics.jobs.get();
+ .. etc
 
-                     Special cases (these methods do not exist elsewhere)
+ Special cases (these methods do not exist elsewhere)
 
-                     blueEconomics.workExperience.getById(id)
-                     blueEconomics.questions.ask(question)
-                     blueEconomics.questions.answersById(id)
-                     blueEconomics.questions.search(query)
+ blueEconomics.workExperience.getById(id)
+ blueEconomics.questions.ask(question)
+ blueEconomics.questions.answersById(id)
+ blueEconomics.questions.search(query)
 
 
-                     All methods return promises:
+ All methods return promises:
 
-                     blueEconomics.workExperience.getById(12345)
-                         .then(function(data) {
+ blueEconomics.workExperience.getById(12345)
+ .then(function(data) {
                                    // do stuff
                                 });
 
 
-                     blueEconomics.industries.get()
-                         .then(function(data) {
+ blueEconomics.industries.get()
+ .then(function(data) {
                                     // do something with the data
                                 })
-                         .catch(function(error) {
+ .catch(function(error) {
                                     console.log('Something bad happened!');
                                 });
 
@@ -47,8 +47,8 @@ function blueEconomics($http, $q) {
 
     /**
      @description    Got this from https://github.com/jaz303/promise-debounce/blob/master/index.js
-                     Given a function that returns a promise, this returns a function which will return
-                     the existing promise until it has been resolved, if called several times in succession.
+     Given a function that returns a promise, this returns a function which will return
+     the existing promise until it has been resolved, if called several times in succession.
      */
     function promiseDebounce(fn, ctx) {
         var pending = null;
@@ -62,8 +62,8 @@ function blueEconomics($http, $q) {
         };
     }
 
-    function deferredRequest(self, url, args) {
-        args = angular.extend({ type: 'GET', dataType: 'json' }, args);
+    function deferredRequest(self, url, args, params) {
+        args = angular.extend({ type: 'GET', dataType: 'json' }, { params: params });
 
         return $http[args.type.toLowerCase()](url, args)
             .then(function (result) {
@@ -91,10 +91,10 @@ function blueEconomics($http, $q) {
     /**
      @description    Makes a GET request to this.url and returns the result.
      @param          {object} args
-                             .cached - true if the request should use cached data if available, false if it should always make a request to the server
+     .cached - true if the request should use cached data if available, false if it should always make a request to the server
      @returns        {Promise} resolved with JSON data from the ajax call.
      */
-    BaseQuery.prototype.get = function (args) {
+    BaseQuery.prototype.get = function (args, params) {
         args = args || {};
 
         var cached   = !!args.cached,
@@ -104,7 +104,7 @@ function blueEconomics($http, $q) {
             deferred.resolve(this.data);
 
         } else {
-            return deferredRequest(this, this.url, {});
+            return deferredRequest(this, this.url, args, params);
         }
 
         return deferred.promise;
@@ -112,12 +112,12 @@ function blueEconomics($http, $q) {
 
     /**
      @description    Calls BaseQuery.prototype.get() and then filters the results by the value of args.text.
-                     By default, the item itself is used to compare against filterText, but if args.filterSelector is specified
-                     it will use that to get the value to compare against instead.
+     By default, the item itself is used to compare against filterText, but if args.filterSelector is specified
+     it will use that to get the value to compare against instead.
      @param          {Object} args
-                             .cached - true to use cached data, false to make a request to the server each time
-                             .text - the text to filter on
-                             .filterSelector - a function which returns the appropriate value out of the data item to compare against args.text
+     .cached - true to use cached data, false to make a request to the server each time
+     .text - the text to filter on
+     .filterSelector - a function which returns the appropriate value out of the data item to compare against args.text
      @returns        {Promise} resolved when the data has been returned and filtered.
      */
     BaseQuery.prototype.filter = function (args) {
@@ -163,10 +163,28 @@ function blueEconomics($http, $q) {
 
     Jobs.prototype = Object.create(BaseQuery.prototype);
 
+    Jobs.prototype.getByIndustry = function (industry) {
+        if (!industry || typeof(industry.id) === 'undefined') {
+            throw new Error("Industry must be specified.");
+        }
+        return this.get({}, { industry: industry.id, cached: false });
+    };
+
+
+    function JobDescription() {
+        BaseQuery.call(this, 'job_description', {});
+    }
+
+    JobDescription.prototype.get = function(jobName) {
+        var url = this.url + '?' + jobName.replace(' ', '%20');
+        var request = deferredRequest(this, url, {});
+        return request;
+    };
+
 
     /**
      @description    GET /workexperience
-                     GET /workexperience/:id
+     GET /workexperience/:id
      */
     function WorkExperience() {
         BaseQuery.call(this, '/workexperience', {});
@@ -175,7 +193,7 @@ function blueEconomics($http, $q) {
     WorkExperience.prototype = Object.create(BaseQuery.prototype);
 
     WorkExperience.prototype.getById = function (id) {
-        var url      = this.url + '/' + id;
+        var url = this.url + '/' + id;
 
         var request = deferredRequest(this, url, {});
 
@@ -214,9 +232,9 @@ function blueEconomics($http, $q) {
 
     /**
      @description    GET /questions
-                     POST /questions  { name, email, text, job }
-                     GET /questions/search/:searchQuery
-                     GET /questions/:id/answers
+     POST /questions  { name, email, text, job }
+     GET /questions/search/:searchQuery
+     GET /questions/:id/answers
      */
     function Questions() {
         BaseQuery.call(this, '/questions', {});
@@ -228,7 +246,7 @@ function blueEconomics($http, $q) {
      @description    Makes a GET request to /questions/:id/answers to return the answers to the given question
      */
     Questions.prototype.answersById = function (id) {
-        var url      = this.url + '/' + id + '/answers';
+        var url = this.url + '/' + id + '/answers';
 
         return deferredRequest(this, url, {});
     };
@@ -237,13 +255,13 @@ function blueEconomics($http, $q) {
      @description    POSTs a question
      */
     Questions.prototype.ask = function (question) {
-        question     = question || {};
-        var data     = {
-                name : question.name,
-                email: question.email,
-                text : question.text,
-                job  : question.job
-            };
+        question = question || {};
+        var data = {
+            name : question.name,
+            email: question.email,
+            text : question.text,
+            job  : question.job
+        };
 
         return deferredRequest(this, this.url, { type: 'POST', dataType: 'json', data: data });
     };
@@ -256,16 +274,16 @@ function blueEconomics($http, $q) {
 
 
     /**
-    @description    GET /search/:searchQuery
-                    This is the only function that gets debounced in here for now since the expectation is that
-                    it'll be called by a keydown/keyup method which might not be debounced/throttled
-    @returns        {Function} - even if called multiple times in immediate succession, will only return the promise
-                    corresponding to the currently executing search.
+     @description    GET /search/:searchQuery
+     This is the only function that gets debounced in here for now since the expectation is that
+     it'll be called by a keydown/keyup method which might not be debounced/throttled
+     @returns        {Function} - even if called multiple times in immediate succession, will only return the promise
+     corresponding to the currently executing search.
      */
     function getDebouncedSearch(self, duration) {
 
         function search(query) {
-            var url      = '/search/:' + query;
+            var url = '/search/:' + query;
 
             return deferredRequest(self, url, { type: 'GET', dataType: 'json' });
         }
@@ -275,16 +293,17 @@ function blueEconomics($http, $q) {
 
 
     /**
-    @description    The main API object
-    */
+     @description    The main API object
+     */
     function BlueEconomics(args) {
         args = args || {};
 
-        this.industries     = new Industries(args);
-        this.jobs           = new Jobs(args);
-        this.occupations    = new Occupations(args);
-        this.questions      = new Questions(args);
-        this.workExperience = new WorkExperience(args);
+        this.industries      = new Industries(args);
+        this.jobs            = new Jobs(args);
+        this.jobDescriptions = new JobDescription(args);
+        this.occupations     = new Occupations(args);
+        this.questions       = new Questions(args);
+        this.workExperience  = new WorkExperience(args);
 
         this.search = getDebouncedSearch(this);
     }
