@@ -3454,21 +3454,19 @@ body {
       -o-transform: translateY(-50%);
       transform: translateY(-50%);
       position: relative;
-      top: 50%;
       -webkit-transition: all 0.3s;
       -moz-transition: all 0.3s;
       transition: all 0.3s;
-      height: 8rem;
-      width: 90%;
-      border-radius: 12px;
+      height: 11rem;
+      width: 11rem;
+      border-radius: 50%;
       background-color: #F36523;
       position: absolute;
-      opacity: 0.8;
-      left: 0;
-      right: 0;
+      opacity: 0.75;
+      left: 5%;
       margin-left: auto;
       margin-right: auto;
-      top: 30%; }
+      top: 50%; }
 
       #section0 #main-box #start-business:hover {
         opacity: 1; }
@@ -3500,21 +3498,19 @@ body {
       -o-transform: translateY(-50%);
       transform: translateY(-50%);
       position: relative;
-      top: 50%;
       -webkit-transition: all 0.3s;
       -moz-transition: all 0.3s;
       transition: all 0.3s;
-      height: 8rem;
-      width: 90%;
-      border-radius: 12px;
+      height: 11rem;
+      width: 11rem;
+      border-radius: 50%;
       background-color: #EC9F45;
       position: absolute;
-      opacity: 0.8;
-      left: 0;
-      right: 0;
+      opacity: 0.75;
+      left: 40%;
       margin-left: auto;
       margin-right: auto;
-      top: 50%; }
+      top: 35%; }
 
       #section0 #main-box #find-job:hover {
         opacity: 1; }
@@ -3550,17 +3546,16 @@ body {
       -webkit-transition: all 0.3s;
       -moz-transition: all 0.3s;
       transition: all 0.3s;
-      height: 8rem;
-      width: 90%;
-      border-radius: 12px;
+      height: 11rem;
+      width: 11rem;
+      border-radius: 50%;
       background-color: #009ACC;
       position: absolute;
-      opacity: 0.8;
-      left: 0;
-      right: 0;
+      opacity: 0.75;
+      left: 40%;
       margin-left: auto;
       margin-right: auto;
-      top: 70%; }
+      top: 65%; }
 
       #section0 #main-box #help-business:hover {
         opacity: 1; }
@@ -3660,9 +3655,8 @@ body {
     transition: all 0.5s; }
 
   #section1 .awesome-form input[type="submit"] {
-    padding: 20px;
-    margin: 0 auto;
-    width: 300px;
+    padding: 15px;
+    margin: 0;
     border: 1px solid #FFFFFF;
     color: #FFFFFF;
     cursor: pointer;
@@ -3675,22 +3669,39 @@ body {
       background: #FFFFFF;
       color: #F36523; }
 
+@media (max-width: 1366px) {
+
+  #section1 .awesome-form input[type="submit"] {
+    width: 350px; }
+}
 @media (max-width: 1024px) {
 
   #section1 .awesome-form label {
-    font-size: 2.5rem; } }
+    font-size: 2.5rem; } 
+  #section1 .awesome-form input[type="submit"] {
+    width: 300px; }
+}
 @media (max-width: 768px) {
 
   #section1 .awesome-form label {
-    font-size: 2rem; } }
+    font-size: 2rem; } 
+  #section1 .awesome-form input[type="submit"] {
+    width: 250px; }
+}
 @media (max-width: 640px) {
 
   #section1 .awesome-form label {
-    font-size: 1.5rem; } }
+    font-size: 1.5rem; } 
+  #section1 .awesome-form input[type="submit"] {
+    width: 250px; }
+}
 @media (max-width: 480px) {
 
   #section1 .awesome-form label {
-    font-size: 1.25rem; } }
+    font-size: 1.25rem; } 
+  #section1 .awesome-form input[type="submit"] {
+    width: 150px; }
+}
 
 .results {
   background-color: #009ACC;
@@ -3699,6 +3710,10 @@ body {
   opacity: 0.95;
   margin: 0 auto;
   height: 100%; }
+
+    #section2 .results .results-text h4 {
+      padding-top: 1rem; }
+
   @media only screen and (min-width: 770px) {
 
     .results {
@@ -3746,6 +3761,122 @@ body {
       padding: 0;
       margin: 0; }
 
+@media only screen and (max-width: 1024px) {
+    .results .results-text h1 {
+      color: #FFFFFF;
+      font-size: 2rem;
+      font-family: helvetica;
+      padding: 0;
+      margin: 0; }
+
+    .results .results-text h2 {
+      color: #FFFFFF;
+      font-size: 1.7rem;
+      font-family: helvetica;
+      padding: 0;
+      margin: 0; }
+
+    .results .results-text h3 {
+      color: #FFFFFF;
+      font-size: 1.5rem;
+      font-family: helvetica;
+      padding: 0;
+      margin: 0; }
+
+    .results .results-text h4 {
+      color: #FFFFFF;
+      font-size: 1.2rem;
+      font-family: helvetica;
+      padding: 0;
+      margin: 0; }
+
+    .results .results-text p {
+      color: #FFFFFF;
+      font-size: 1rem;
+      font-family: helvetica;
+      padding: 0;
+      margin: 0; }
+  }
+
+
+  @media only screen and (max-width: 767px) {
+    .results .results-text h1 {
+      color: #FFFFFF;
+      font-size: 1.6rem;
+      font-family: helvetica;
+      padding: 0;
+      margin: 0; }
+
+    .results .results-text h2 {
+      color: #FFFFFF;
+      font-size: 1.4rem;
+      font-family: helvetica;
+      padding: 0;
+      margin: 0; }
+
+    .results .results-text h3 {
+      color: #FFFFFF;
+      font-size: 1.1rem;
+      font-family: helvetica;
+      padding: 0;
+      margin: 0; }
+
+    .results .results-text h4 {
+      color: #FFFFFF;
+      font-size: 0.9rem;
+      font-family: helvetica;
+      padding: 0;
+      margin: 0; }
+
+    .results .results-text p {
+      color: #FFFFFF;
+      font-size: 0.7rem;
+      font-family: helvetica;
+      padding: 0;
+      margin: 0; }
+  }
+
+
+  @media only screen and (max-width: 480px) {
+    .results .results-text h1 {
+      color: #FFFFFF;
+      font-size: 1.5rem;
+      font-family: helvetica;
+      padding: 0;
+      margin: 0; }
+
+    .results .results-text h2 {
+      color: #FFFFFF;
+      font-size: 1.3rem;
+      font-family: helvetica;
+      padding: 0;
+      margin: 0; }
+
+    .results .results-text h3 {
+      color: #FFFFFF;
+      font-size: 1.1rem;
+      font-family: helvetica;
+      padding: 0;
+      margin: 0; }
+
+    .results .results-text h4 {
+      color: #FFFFFF;
+      font-size: 0.9rem;
+      font-family: helvetica;
+      padding: 0;
+      margin: 0; }
+
+    .results .results-text p {
+      color: #FFFFFF;
+      font-size: 0.7rem;
+      font-family: helvetica;
+      padding: 0;
+      margin: 0; }
+      
+      #section2 .results .results-text h4 {
+        padding-top: 0.5rem; }
+  }
+
 
 #section2:before {
   content: "";
@@ -3771,9 +3902,6 @@ body {
 #section2 .results .results-text {
   margin: 0 auto;
   width: 85%; }
-
-  #section2 .results .results-text h4 {
-    padding-top: 1rem; }
 
 
 #search-icon {
