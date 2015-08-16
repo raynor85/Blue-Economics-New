@@ -2979,7 +2979,7 @@ body {
 
         #section0 #main-box #help-business .text h3 {
           font-size: 1rem; } }
-@media (max-width: 1282px) {
+/*@media (max-width: 1282px) {
 
   #section0:before {
     content: "";
@@ -3125,7 +3125,7 @@ body {
           font-size: 1.25rem; }
 
         #section0 #main-box #help-business .text h3 {
-          font-size: 1rem; } }
+          font-size: 1rem; } }*/
 @media (max-width: 1282px) {
 
   #section0:before {
@@ -3273,19 +3273,9 @@ body {
 
         #section0 #main-box #help-business .text h3 {
           font-size: 0.9rem; } }
-@media (max-width: 640px) {
 
-  #section0:before {
-    content: "";
-    display: block;
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    z-index: -1;
-    background: url("../images/brooklyn.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center; }
+
+@media (max-width: 780px) and (orientation:portrait)  {
 
   #section0 #main-box {
     max-width: 35rem;
@@ -3310,7 +3300,7 @@ body {
       background-color: #F36523;
       position: absolute;
       opacity: 0.8;
-      left: 27%; }
+      left: 17%; }
 
       #section0 #main-box #start-business:hover {
         opacity: 1; }
@@ -3342,7 +3332,6 @@ body {
       -o-transform: translateY(-50%);
       transform: translateY(-50%);
       position: relative;
-      top: 50%;
       -webkit-transition: all 0.3s;
       -moz-transition: all 0.3s;
       transition: all 0.3s;
@@ -3352,7 +3341,7 @@ body {
       background-color: #EC9F45;
       position: absolute;
       opacity: 0.8;
-      left: 62%;
+      left: 52%;
       top: 33%; }
 
       #section0 #main-box #find-job:hover {
@@ -3385,7 +3374,6 @@ body {
       -o-transform: translateY(-50%);
       transform: translateY(-50%);
       position: relative;
-      top: 50%;
       -webkit-transition: all 0.3s;
       -moz-transition: all 0.3s;
       transition: all 0.3s;
@@ -3395,7 +3383,7 @@ body {
       background-color: #009ACC;
       position: absolute;
       opacity: 0.8;
-      left: 62%;
+      left: 52%;
       top: 71%; }
 
       #section0 #main-box #help-business:hover {
@@ -3420,19 +3408,281 @@ body {
 
         #section0 #main-box #help-business .text h3 {
           font-size: 0.85rem; } }
-@media (max-width: 480px) {
 
-  #section0:before {
-    content: "";
-    display: block;
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    z-index: -1;
-    background: url("../images/brooklyn.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center; }
+
+@media (max-width: 780px) and (orientation:landscape)  {
+
+  #section0 #main-box {
+    max-width: 35rem;
+    height: 35rem;
+    margin: 0 auto;
+    position: relative; }
+
+    #section0 #main-box #start-business {
+      -webkit-transform: translateY(-50%);
+      -moz-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      -o-transform: translateY(-50%);
+      transform: translateY(-50%);
+      position: relative;
+      top: 38%;
+      -webkit-transition: all 0.3s;
+      -moz-transition: all 0.3s;
+      transition: all 0.3s;
+      height: 11rem;
+      width: 11rem;
+      border-radius: 50%;
+      background-color: #F36523;
+      position: absolute;
+      opacity: 0.8;
+      left: 37%; }
+
+      #section0 #main-box #start-business:hover {
+        opacity: 1; }
+
+      #section0 #main-box #start-business .text {
+        -webkit-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        -o-transform: translateY(-50%);
+        transform: translateY(-50%);
+        position: relative;
+        top: 50%; }
+
+        #section0 #main-box #start-business .text h1,
+        #section0 #main-box #start-business .text h3 {
+          color: #FFFFFF; }
+
+        #section0 #main-box #start-business .text h1 {
+          font-weight: bold;
+          font-size: 0.80rem; }
+
+        #section0 #main-box #start-business .text h3 {
+          font-size: 0.70rem; }
+
+    #section0 #main-box #find-job {
+      -webkit-transform: translateY(-50%);
+      -moz-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      -o-transform: translateY(-50%);
+      transform: translateY(-50%);
+      position: relative;
+      top: 50%;
+      -webkit-transition: all 0.3s;
+      -moz-transition: all 0.3s;
+      transition: all 0.3s;
+      height: 11rem;
+      width: 11rem;
+      border-radius: 50%;
+      background-color: #EC9F45;
+      position: absolute;
+      opacity: 0.8;
+      left: 60%;
+      top: 24%; }
+
+      #section0 #main-box #find-job:hover {
+        opacity: 1; }
+
+      #section0 #main-box #find-job .text {
+        -webkit-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        -o-transform: translateY(-50%);
+        transform: translateY(-50%);
+        position: relative;
+        top: 50%; }
+
+        #section0 #main-box #find-job .text h1,
+        #section0 #main-box #find-job .text h3 {
+          color: #FFFFFF; }
+
+        #section0 #main-box #find-job .text h1 {
+          font-weight: bold;
+          font-size: 0.8rem; }
+
+        #section0 #main-box #find-job .text h3 {
+          font-size: 0.7rem; }
+
+    #section0 #main-box #help-business {
+      -webkit-transform: translateY(-50%);
+      -moz-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      -o-transform: translateY(-50%);
+      transform: translateY(-50%);
+      position: relative;
+      -webkit-transition: all 0.3s;
+      -moz-transition: all 0.3s;
+      transition: all 0.3s;
+      height: 11rem;
+      width: 11rem;
+      border-radius: 50%;
+      background-color: #009ACC;
+      position: absolute;
+      opacity: 0.8;
+      left: 60%;
+      top: 52%; }
+
+      #section0 #main-box #help-business:hover {
+        opacity: 1; }
+
+      #section0 #main-box #help-business .text {
+        -webkit-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        -o-transform: translateY(-50%);
+        transform: translateY(-50%);
+        position: relative;
+        top: 50%; }
+
+        #section0 #main-box #help-business .text h1,
+        #section0 #main-box #help-business .text h3 {
+          color: #FFFFFF; }
+
+        #section0 #main-box #help-business .text h1 {
+          font-weight: bold;
+          font-size: 0.8rem; }
+
+        #section0 #main-box #help-business .text h3 {
+          font-size: 0.7rem; } }
+
+
+
+@media (max-width: 680px) and (orientation:landscape) {
+
+  #section0 #main-box {
+    max-width: 35rem;
+    height: 35rem;
+    margin: 0 auto;
+    position: relative; }
+
+    #section0 #main-box #start-business {
+      -webkit-transform: translateY(-50%);
+      -moz-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      -o-transform: translateY(-50%);
+      transform: translateY(-50%);
+      position: relative;
+      top: 33%;
+      -webkit-transition: all 0.3s;
+      -moz-transition: all 0.3s;
+      transition: all 0.3s;
+      height: 10rem;
+      width: 10rem;
+      border-radius: 50%;
+      background-color: #F36523;
+      position: absolute;
+      opacity: 0.8;
+      left: 37%; }
+
+      #section0 #main-box #start-business:hover {
+        opacity: 1; }
+
+      #section0 #main-box #start-business .text {
+        -webkit-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        -o-transform: translateY(-50%);
+        transform: translateY(-50%);
+        position: relative;
+        top: 50%; }
+
+        #section0 #main-box #start-business .text h1,
+        #section0 #main-box #start-business .text h3 {
+          color: #FFFFFF; }
+
+        #section0 #main-box #start-business .text h1 {
+          font-weight: bold;
+          font-size: 0.85rem; }
+
+        #section0 #main-box #start-business .text h3 {
+          font-size: 0.75rem; }
+
+    #section0 #main-box #find-job {
+      -webkit-transform: translateY(-50%);
+      -moz-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      -o-transform: translateY(-50%);
+      transform: translateY(-50%);
+      position: relative;
+      -webkit-transition: all 0.3s;
+      -moz-transition: all 0.3s;
+      transition: all 0.3s;
+      height: 10rem;
+      width: 10rem;
+      border-radius: 50%;
+      background-color: #EC9F45;
+      position: absolute;
+      opacity: 0.8;
+      left: 60%;
+      top: 21%; }
+
+      #section0 #main-box #find-job:hover {
+        opacity: 1; }
+
+      #section0 #main-box #find-job .text {
+        -webkit-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        -o-transform: translateY(-50%);
+        transform: translateY(-50%);
+        position: relative;
+        top: 50%; }
+
+        #section0 #main-box #find-job .text h1,
+        #section0 #main-box #find-job .text h3 {
+          color: #FFFFFF; }
+
+        #section0 #main-box #find-job .text h1 {
+          font-weight: bold;
+          font-size: 0.9rem; }
+
+        #section0 #main-box #find-job .text h3 {
+          font-size: 0.8rem; }
+
+    #section0 #main-box #help-business {
+      -webkit-transform: translateY(-50%);
+      -moz-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      -o-transform: translateY(-50%);
+      transform: translateY(-50%);
+      position: relative;
+      -webkit-transition: all 0.3s;
+      -moz-transition: all 0.3s;
+      transition: all 0.3s;
+      height: 10rem;
+      width: 10rem;
+      border-radius: 50%;
+      background-color: #009ACC;
+      position: absolute;
+      opacity: 0.8;
+      left: 60%;
+      top: 45%; }
+
+      #section0 #main-box #help-business:hover {
+        opacity: 1; }
+
+      #section0 #main-box #help-business .text {
+        -webkit-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        -o-transform: translateY(-50%);
+        transform: translateY(-50%);
+        position: relative;
+        top: 50%; }
+
+        #section0 #main-box #help-business .text h1,
+        #section0 #main-box #help-business .text h3 {
+          color: #FFFFFF; }
+
+        #section0 #main-box #help-business .text h1 {
+          font-weight: bold;
+          font-size: 0.9rem; }
+
+        #section0 #main-box #help-business .text h3 {
+          font-size: 0.8rem; } }
+
+
+@media (max-width: 480px) and (orientation:portrait) {
 
   #section0 #main-box {
     -webkit-transform: translateY(-50%);
@@ -3463,7 +3713,7 @@ body {
       background-color: #F36523;
       position: absolute;
       opacity: 0.75;
-      left: 5%;
+      left: 9%;
       margin-left: auto;
       margin-right: auto;
       top: 50%; }
@@ -3486,10 +3736,10 @@ body {
 
         #section0 #main-box #start-business .text h1 {
           font-weight: bold;
-          font-size: 0.95rem; }
+          font-size: 0.8rem; }
 
         #section0 #main-box #start-business .text h3 {
-          font-size: 0.85rem; }
+          font-size: 0.75rem; }
 
     #section0 #main-box #find-job {
       -webkit-transform: translateY(-50%);
@@ -3507,7 +3757,7 @@ body {
       background-color: #EC9F45;
       position: absolute;
       opacity: 0.75;
-      left: 40%;
+      left: 36%;
       margin-left: auto;
       margin-right: auto;
       top: 35%; }
@@ -3530,10 +3780,10 @@ body {
 
         #section0 #main-box #find-job .text h1 {
           font-weight: bold;
-          font-size: 0.95rem; }
+          font-size: 0.8rem; }
 
         #section0 #main-box #find-job .text h3 {
-          font-size: 0.85rem; }
+          font-size: 0.75rem; }
 
     #section0 #main-box #help-business {
       -webkit-transform: translateY(-50%);
@@ -3552,7 +3802,7 @@ body {
       background-color: #009ACC;
       position: absolute;
       opacity: 0.75;
-      left: 40%;
+      left: 36%;
       margin-left: auto;
       margin-right: auto;
       top: 65%; }
@@ -3575,10 +3825,160 @@ body {
 
         #section0 #main-box #help-business .text h1 {
           font-weight: bold;
-          font-size: 0.95rem; }
+          font-size: 0.8rem; }
 
         #section0 #main-box #help-business .text h3 {
-          font-size: 0.85rem; } }
+          font-size: 0.75rem; } }
+
+
+@media (max-width: 480px) and (orientation:landscape) {
+
+  #section0 #main-box {
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    position: relative;
+    top: 50%;
+    max-width: 100%;
+    height: 45rem;
+    margin: 0 auto;
+    position: relative; }
+
+    #section0 #main-box #start-business {
+      -webkit-transform: translateY(-50%);
+      -moz-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      -o-transform: translateY(-50%);
+      transform: translateY(-50%);
+      position: relative;
+      -webkit-transition: all 0.3s;
+      -moz-transition: all 0.3s;
+      transition: all 0.3s;
+      height: 11rem;
+      width: 11rem;
+      border-radius: 50%;
+      background-color: #F36523;
+      position: absolute;
+      opacity: 0.75;
+      left: 15%;
+      margin-left: auto;
+      margin-right: auto;
+      top: 50%; }
+
+      #section0 #main-box #start-business:hover {
+        opacity: 1; }
+
+      #section0 #main-box #start-business .text {
+        -webkit-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        -o-transform: translateY(-50%);
+        transform: translateY(-50%);
+        position: relative;
+        top: 50%; }
+
+        #section0 #main-box #start-business .text h1,
+        #section0 #main-box #start-business .text h3 {
+          color: #FFFFFF; }
+
+        #section0 #main-box #start-business .text h1 {
+          font-weight: bold;
+          font-size: 0.8rem; }
+
+        #section0 #main-box #start-business .text h3 {
+          font-size: 0.75rem; }
+
+    #section0 #main-box #find-job {
+      -webkit-transform: translateY(-50%);
+      -moz-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      -o-transform: translateY(-50%);
+      transform: translateY(-50%);
+      position: relative;
+      -webkit-transition: all 0.3s;
+      -moz-transition: all 0.3s;
+      transition: all 0.3s;
+      height: 11rem;
+      width: 11rem;
+      border-radius: 50%;
+      background-color: #EC9F45;
+      position: absolute;
+      opacity: 0.75;
+      left: 45%;
+      margin-left: auto;
+      margin-right: auto;
+      top: 40%; }
+
+      #section0 #main-box #find-job:hover {
+        opacity: 1; }
+
+      #section0 #main-box #find-job .text {
+        -webkit-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        -o-transform: translateY(-50%);
+        transform: translateY(-50%);
+        position: relative;
+        top: 50%; }
+
+        #section0 #main-box #find-job .text h1,
+        #section0 #main-box #find-job .text h3 {
+          color: #FFFFFF; }
+
+        #section0 #main-box #find-job .text h1 {
+          font-weight: bold;
+          font-size: 0.8rem; }
+
+        #section0 #main-box #find-job .text h3 {
+          font-size: 0.75rem; }
+
+    #section0 #main-box #help-business {
+      -webkit-transform: translateY(-50%);
+      -moz-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      -o-transform: translateY(-50%);
+      transform: translateY(-50%);
+      position: relative;
+      top: 50%;
+      -webkit-transition: all 0.3s;
+      -moz-transition: all 0.3s;
+      transition: all 0.3s;
+      height: 11rem;
+      width: 11rem;
+      border-radius: 50%;
+      background-color: #009ACC;
+      position: absolute;
+      opacity: 0.75;
+      left: 45%;
+      margin-left: auto;
+      margin-right: auto;
+      top: 60%; }
+
+      #section0 #main-box #help-business:hover {
+        opacity: 1; }
+
+      #section0 #main-box #help-business .text {
+        -webkit-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        -o-transform: translateY(-50%);
+        transform: translateY(-50%);
+        position: relative;
+        top: 50%; }
+
+        #section0 #main-box #help-business .text h1,
+        #section0 #main-box #help-business .text h3 {
+          color: #FFFFFF; }
+
+        #section0 #main-box #help-business .text h1 {
+          font-weight: bold;
+          font-size: 0.8rem; }
+
+        #section0 #main-box #help-business .text h3 {
+          font-size: 0.75rem; } }
+
 
 #section1:before {
   content: "";
