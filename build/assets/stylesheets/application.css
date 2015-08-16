@@ -3562,7 +3562,7 @@ body {
       -o-transform: translateY(-50%);
       transform: translateY(-50%);
       position: relative;
-      top: 33%;
+      top: 28%;
       -webkit-transition: all 0.3s;
       -moz-transition: all 0.3s;
       transition: all 0.3s;
@@ -3614,7 +3614,7 @@ body {
       position: absolute;
       opacity: 0.8;
       left: 60%;
-      top: 21%; }
+      top: 16%; }
 
       #section0 #main-box #find-job:hover {
         opacity: 1; }
@@ -3656,7 +3656,7 @@ body {
       position: absolute;
       opacity: 0.8;
       left: 60%;
-      top: 45%; }
+      top: 40%; }
 
       #section0 #main-box #help-business:hover {
         opacity: 1; }
