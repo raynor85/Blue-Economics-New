@@ -181,7 +181,7 @@ $app->get('/search/:searchQuery', function($searchQuery) use($app) {
 				Id AS id,
 				Name AS name
 			FROM industries
-			WHERE MATCH(Name) AGAINST ( :searchQuery )
+		
 		',
 		['searchQuery' => $searchQuery]
 	);

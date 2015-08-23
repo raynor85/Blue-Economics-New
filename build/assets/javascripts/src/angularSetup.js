@@ -15,7 +15,7 @@ var ngAnimate = require('angular-animate');
  * @param $urlRouterProvider
  */
 function stateConfig($stateProvider, $urlRouterProvider) {
-
+//
     $stateProvider
         .state('home', {
             url         : '/',
