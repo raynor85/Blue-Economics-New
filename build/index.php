@@ -168,8 +168,8 @@ $app->get('/job_details', function () use ($app) {
 				'name' => $occupation->name,
 				'code' => $occupation->code,
 				'description' => $occupation->description,
-				'annual_salary' => $occupation->annual_salary,
-				'hourly_salary' => $occupation->hourly_salary,
+				'annual_salary' => floatval($occupation->annual_salary),
+				'hourly_salary' => floatval($occupation->hourly_salary),
 				'education_level' => $occupation->education_level,
 				'industry' => $occupation->industry,
 			];

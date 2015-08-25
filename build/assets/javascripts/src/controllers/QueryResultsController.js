@@ -11,7 +11,6 @@
  */
 function QueryResultsController(jobs) {
 	this.job = jobs[0];
-	console.log(jobs);
 }
 
 module.exports = QueryResultsController;
