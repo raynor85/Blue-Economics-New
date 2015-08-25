@@ -9,16 +9,25 @@
  * @constructor
  * @param {array} jobs - passed via state params
  */
-function JobsByIndustryController($state,jobs) {
+function JobsByIndustryController($state, jobs, blueEconomics) {
 
     this.jobs = jobs;
     this.selectJob = selectJob;
 
     function selectJob(job) {
-    	console.log(job);
-        $state.go('queryResults', {
-            job: job
-        });
+
+        blueEconomics.jobDetails.getById(job.id)
+            .then(function(data) {
+                $state.go('queryResults', {
+                    jobs: data
+                });
+            })
+            .catch(function(err) {
+                console.log(err);
+            });
+
+
+
     }
 }
 

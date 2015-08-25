@@ -5,44 +5,43 @@ require 'Slim/Slim.php';
 \Slim\Slim::registerAutoloader();
 
 $app = new \Slim\Slim(array(
-    // change to 'development' for testing
-    'mode' => 'development'
-    //'mode' => 'production'
+	// change to 'development' for testing
+	'mode' => 'development',
+	//'mode' => 'production'
 ));
 
 // Only invoked if mode is "production"
 $app->configureMode('production', function () use ($app) {
-    $app->config(array(
-        'log.enable' => false,
-        'debug' => false,
-        'config.path' => 'config/prod/'
-    ));
+	$app->config(array(
+		'log.enable' => false,
+		'debug' => false,
+		'config.path' => 'config/prod/',
+	));
 });
 
 // Only invoked if mode is "development"
 $app->configureMode('development', function () use ($app) {
-    $app->config(array(
-        'log.enable' => false,
-        'debug' => true,
-        'config.path' => 'config/dev/'
-    ));
+	$app->config(array(
+		'log.enable' => false,
+		'debug' => true,
+		'config.path' => 'config/dev/',
+	));
 });
 
 // Define mysql connector
 $app->container->singleton('mysql', function () {
-    $app = \Slim\Slim::getInstance();
-    $config = parse_ini_file(getAppConfigFile('mysql.ini'));
-    $pdo = new PDO("mysql:host=". $config['db.hostname'].";dbname=".$config['db.schema'], $config['db.user'], $config['db.password']);
-    // set the character set to utf8 to ensure proper json encoding
-    $pdo->exec("SET NAMES 'utf8'");
-    return $pdo;
+	$app = \Slim\Slim::getInstance();
+	$config = parse_ini_file(getAppConfigFile('mysql.ini'));
+	$pdo = new PDO("mysql:host=" . $config['db.hostname'] . ";dbname=" . $config['db.schema'], $config['db.user'], $config['db.password']);
+	// set the character set to utf8 to ensure proper json encoding
+	$pdo->exec("SET NAMES 'utf8'");
+	return $pdo;
 });
 
-
 /*$app->container->singleton('log', function() {
-    $app = \Slim\Slim::getInstance();
-    Logger::configure(getAppConfigFile('log4php-config.xml'));
-    return Logger::getLogger('default');
+$app = \Slim\Slim::getInstance();
+Logger::configure(getAppConfigFile('log4php-config.xml'));
+return Logger::getLogger('default');
 });*/
 
 // FIXME: Implement separation of view and data
@@ -53,37 +52,37 @@ $view = $app->view();
 $view->setTemplatesDirectory('./');
 
 function executeSql($query, array $params = array()) {
-    $app = \Slim\Slim::getInstance();
-    $app->log->debug(sprintf("Executing query: %s with params: %s", $query, json_encode($params)));
-    $mysql = $app->mysql;    
-    $handler = $mysql->prepare($query);
-    $handler->execute($params);
-    return $handler->fetchAll(PDO::FETCH_OBJ);    
+	$app = \Slim\Slim::getInstance();
+	$app->log->debug(sprintf("Executing query: %s with params: %s", $query, json_encode($params)));
+	$mysql = $app->mysql;
+	$handler = $mysql->prepare($query);
+	$handler->execute($params);
+	return $handler->fetchAll(PDO::FETCH_OBJ);
 };
 
 function getAppConfigFile($configFile) {
-    $app = \Slim\Slim::getInstance();
-    return sprintf("%s%s", $app->config('config.path'), $configFile);
+	$app = \Slim\Slim::getInstance();
+	return sprintf("%s%s", $app->config('config.path'), $configFile);
 }
 
 // main page
 $app->get('/', function () use ($app) {
-    $app->render('index.html');
+	$app->render('index.html');
 });
 
 // api example
 $app->get('/api', function () use ($app) {
-    $res = executeSql("SELECT * FROM filters LIMIT 10");
-    foreach($res as $row) {
-        echo $row->Name;
-        echo "<br>";
-    };
+	$res = executeSql("SELECT * FROM filters LIMIT 10");
+	foreach ($res as $row) {
+		echo $row->Name;
+		echo "<br>";
+	};
 
 });
 
 // industry example
 $app->get('/industries', function () use ($app) {
-    $industries = executeSql('
+	$industries = executeSql('
 		SELECT DISTINCT
 			Id AS id,
 			Name AS name
@@ -93,12 +92,12 @@ $app->get('/industries', function () use ($app) {
 
 	$result = [];
 
-    foreach($industries as $industry){
-        $result[] = [
+	foreach ($industries as $industry) {
+		$result[] = [
 			'id' => $industry->id,
-			'name' => $industry->name
+			'name' => $industry->name,
 		];
-    };
+	};
 
 	$app->response->headers->set('Content-Type', 'application/json');
 	$app->response->write(json_encode($result));
@@ -130,72 +129,112 @@ $app->get('/jobs', function () use ($app) {
 
 	$result = [];
 
-    foreach($occupations as $occupation) {
-        $result[] = [
+	foreach ($occupations as $occupation) {
+		$result[] = [
 			'id' => $occupation->id,
-			'name' => $occupation->name
+			'name' => $occupation->name,
 		];
-    };
+	};
 
 	$app->response->headers->set('Content-Type', 'application/json');
 	$app->response->write(json_encode($result));
 });
 
+$app->get('/job_details', function () use ($app) {
+	if (isset($_GET['id']) && strlen(trim($_GET['id'])) > 0) {
+		$occupations = executeSql(
+			'
+			SELECT
+				oc.Id as id,
+				oc.Name as name,
+				oc.Code as code,
+				oc.Description as description,
+				oc.MedianPayAnnual annual_salary,
+				oc.MedianPayHourly hourly_salary,
+				el.Name as education_level ,
+				ind.Name as industry
+			FROM occupations oc
+			INNER JOIN educationlevels el ON oc.EducationLevelId = el.Id
+			INNER JOIN industries ind ON oc.IndustryId = ind.Id
+			WHERE oc.Id = :occupationId
+            ', ['occupationId' => intval($_GET['id'])]
+		);
+
+		$result = [];
+
+		foreach ($occupations as $occupation) {
+			$result[] = [
+				'id' => $occupation->id,
+				'name' => $occupation->name,
+				'code' => $occupation->code,
+				'description' => $occupation->description,
+				'annual_salary' => $occupation->annual_salary,
+				'hourly_salary' => $occupation->hourly_salary,
+				'education_level' => $occupation->education_level,
+				'industry' => $occupation->industry,
+			];
+		};
+
+		$app->response->headers->set('Content-Type', 'application/json');
+		$app->response->write(json_encode($result));
+	}
+});
+
 // jobs example
 $app->get('/job_description', function () use ($app) {
-    $app->response->headers->set('Content-Type', 'application/json');
-    $job = rawurldecode($_SERVER["QUERY_STRING"]);
-    $res = executeSql('SELECT DISTINCT Name, Description, MedianPayAnnual, MedianPayHourly, NumberOfJobs, EmploymentOpenings FROM occupations WHERE Name = :jobName', array(':jobName' => $job));
-    foreach($res as $entry) {
-        $app->response->write(json_encode($entry, JSON_PRETTY_PRINT));
-    }
+	$app->response->headers->set('Content-Type', 'application/json');
+	$job = rawurldecode($_SERVER["QUERY_STRING"]);
+	$res = executeSql('SELECT DISTINCT Name, Description, MedianPayAnnual, MedianPayHourly, NumberOfJobs, EmploymentOpenings FROM occupations WHERE Name = :jobName', array(':jobName' => $job));
+	foreach ($res as $entry) {
+		$app->response->write(json_encode($entry, JSON_PRETTY_PRINT));
+	}
 });
 
-$app->get('/workexperience/:id', function($id) use($app) {
-    $res = executeSql('SELECT DISTINCT Id, Name FROM workexperiences WHERE id = :id', array(':id' => $id));
-    $result = [];
-    foreach ($res as $entry) {
-        array_push($result, array( 'id' => $id, 'name' => $entry->Name));
-    }
-    $app->response->headers->set('Content-Type', 'application/json');
-    $app->response->write(json_encode($result));
+$app->get('/workexperience/:id', function ($id) use ($app) {
+	$res = executeSql('SELECT DISTINCT Id, Name FROM workexperiences WHERE id = :id', array(':id' => $id));
+	$result = [];
+	foreach ($res as $entry) {
+		array_push($result, array('id' => $id, 'name' => $entry->Name));
+	}
+	$app->response->headers->set('Content-Type', 'application/json');
+	$app->response->write(json_encode($result));
 });
 
-$app->get('/workexperience', function() use($app) {
-    $res = executeSql('SELECT DISTINCT Id, Name FROM workexperiences');
-    $result = [];
-    foreach($res as $entry) {
-        array_push($result, array('id' => $entry->Id, 'name' => $entry->Name));        
-    }
-    $app->response->headers->set('Content-Type', 'application/json');
-    $app->response->write(json_encode($result));
+$app->get('/workexperience', function () use ($app) {
+	$res = executeSql('SELECT DISTINCT Id, Name FROM workexperiences');
+	$result = [];
+	foreach ($res as $entry) {
+		array_push($result, array('id' => $entry->Id, 'name' => $entry->Name));
+	}
+	$app->response->headers->set('Content-Type', 'application/json');
+	$app->response->write(json_encode($result));
 });
 
-$app->get('/search/:searchQuery', function($searchQuery) use($app) {
-    $result = array('industries' => [], 'jobs' => []);
+$app->get('/search/:searchQuery', function ($searchQuery) use ($app) {
+	$result = array('industries' => [], 'jobs' => []);
 
-    // find matching industries
-    $industries = executeSql(
+	// find matching industries
+	$industries = executeSql(
 		'
 			SELECT
 				Id AS id,
 				Name AS name
 			FROM industries
-		
+
 		',
 		['searchQuery' => $searchQuery]
 	);
 
-    $resultIndustries = [];
+	$resultIndustries = [];
 
-    foreach($industries as $industry) {
+	foreach ($industries as $industry) {
 		$resultIndustries[$industry->id] = [
 			'id' => $industry->id,
-			'name' => $industry->name
+			'name' => $industry->name,
 		];
-    }
+	}
 
-    // find matching jobs
+	// find matching jobs
 	$jobs = executeSql(
 		'
 			SELECT DISTINCT
@@ -210,51 +249,52 @@ $app->get('/search/:searchQuery', function($searchQuery) use($app) {
 		['searchQuery' => $searchQuery]
 	);
 
-    $resultJobs = [];
+	$resultJobs = [];
 
-    foreach($jobs as $job) {
+	foreach ($jobs as $job) {
 		$resultJobs[] = [
-			'name' => $job->jobName
+			'name' => $job->jobName,
 		];
 
-        // add job industry to industries list
+		// add job industry to industries list
 		$resultIndustries[$job->industryId] = [
 			'id' => $job->industryId,
-			'name' => $job->industryName
+			'name' => $job->industryName,
 		];
-    }
+	}
 
-    $result = [
+	$result = [
 		'industries' => array_values($resultIndustries),
-		'jobs' => $resultJobs
+		'jobs' => $resultJobs,
 	];
 
-    $app->response->headers->set('Content-Type', 'application/json');
-    $app->response->write(json_encode($result));
+	$app->response->headers->set('Content-Type', 'application/json');
+	$app->response->write(json_encode($result));
 });
 
-$app->post('/occupations', function() use($app) {
-    $result = [];
-    if (isset($_POST['education'])) {
-        $optionArray = $_POST['education'];
-        array_walk($optionArray, function($value, $index) {
-            $value = explode(",", $value);
-        });
-        $edLevels = implode(",", $optionArray);
-        //$app->log->info(sprintf("Education levels %s", $edLevels));
-        $res = executeSql("SELECT DISTINCT Name FROM occupations WHERE  EducationLevelId in ( $edLevels ) ORDER BY Name");
-    } else {
-        $res  = executeSql('SELECT DISTINCT Name FROM occupations ORDER BY Name');
-    }
-    foreach($res as $occupation) {
-        array_push($result, (array) $occupation);
-    }
-    $app->response->headers->set('Content-Type', 'application/json');
-    $app->response->write(json_encode($result));
+$app->post('/occupations', function () use ($app) {
+	$result = [];
+	if (isset($_POST['education'])) {
+		$optionArray = $_POST['education'];
+		array_walk($optionArray, function ($value, $index) {
+			$value = explode(",", $value);
+		});
+		$edLevels = implode(",", $optionArray);
+		//$app->log->info(sprintf("Education levels %s", $edLevels));
+		$res = executeSql("SELECT DISTINCT Name FROM occupations WHERE  EducationLevelId in ( $edLevels ) ORDER BY Name");
+	} else {
+		$res = executeSql('SELECT DISTINCT Name FROM occupations ORDER BY Name');
+	}
+	foreach ($res as $occupation) {
+		array_push($result, (array) $occupation);
+	}
+	$app->response->headers->set('Content-Type', 'application/json');
+	$app->response->write(json_encode($result));
 });
 
-$app->get('/questions', function() use ($app) {
-	if (isset($_GET['industry']) && strlen(trim($_GET['industry'])) > 0) { // filter by industry
+$app->get('/questions', function () use ($app) {
+	if (isset($_GET['industry']) && strlen(trim($_GET['industry'])) > 0) {
+		// filter by industry
 		$occupations = executeSql(
 			'
 				SELECT Id AS id
@@ -269,7 +309,8 @@ $app->get('/questions', function() use ($app) {
 		foreach ($occupations as $occupation) {
 			$occupationIds[] = $occupation->id;
 		}
-	} elseif (isset($_GET['occupation']) && strlen(trim($_GET['occupation'])) > 0) { // filter by occupation
+	} elseif (isset($_GET['occupation']) && strlen(trim($_GET['occupation'])) > 0) {
+		// filter by occupation
 		$occupationIds = [$_GET['occupation']];
 	}
 
@@ -304,7 +345,7 @@ $app->get('/questions', function() use ($app) {
 	foreach ($questions as $question) {
 		$result[] = [
 			'id' => $question->id,
-			'text' => $question->text
+			'text' => $question->text,
 		];
 	}
 
@@ -312,38 +353,38 @@ $app->get('/questions', function() use ($app) {
 	$app->response->write(json_encode($result));
 });
 
-$app->post('/questions', function() use ($app) {
-    executeSql(
-        '
+$app->post('/questions', function () use ($app) {
+	executeSql(
+		'
             INSERT INTO faq_questionsource (`Name`, `Email`)
             VALUES (:name, :email)
         ',
-        [
-            'name' => $app->request->params('name'),
-            'email' => $app->request->params('email'),
-        ]
-    );
+		[
+			'name' => $app->request->params('name'),
+			'email' => $app->request->params('email'),
+		]
+	);
 
-    $sourceId = executeSql('SELECT LAST_INSERT_ID() AS id');
-    $sourceId = $sourceId[0]->id;
+	$sourceId = executeSql('SELECT LAST_INSERT_ID() AS id');
+	$sourceId = $sourceId[0]->id;
 
-    executeSql(
-        '
+	executeSql(
+		'
             INSERT INTO faq_question (`Text`, `OccupationId`, `DateCreated`, `FAQ_QuestionSourceId`)
             VALUES (:text, :job, NOW(), :sourceId)
         ',
-        [
-            'text' => $app->request->params('text'),
-            'job' => $app->request->params('job'),
-            'sourceId' => $sourceId
-        ]
-    );
+		[
+			'text' => $app->request->params('text'),
+			'job' => $app->request->params('job'),
+			'sourceId' => $sourceId,
+		]
+	);
 });
 
-$app->get('/questions/search/:searchQuery', function($searchQuery) use($app) {
-    // find matching questions
+$app->get('/questions/search/:searchQuery', function ($searchQuery) use ($app) {
+	// find matching questions
 	$questions = executeSql(
-        '
+		'
             SELECT
                 fq.Id AS id,
                 fq.Text AS text
@@ -353,21 +394,21 @@ $app->get('/questions/search/:searchQuery', function($searchQuery) use($app) {
             WHERE MATCH(fq.Text) AGAINST (:searchQuery)
             ORDER BY fq.Text ASC
         ',
-        ['searchQuery' => $searchQuery]
-    );
+		['searchQuery' => $searchQuery]
+	);
 
-    $resultQuestions = [];
+	$resultQuestions = [];
 
-    foreach($questions as $question) {
-        $resultQuestions[$question->id] = [
-            'id' => $question->id,
-            'name' => $question->text
-        ];
-    }
+	foreach ($questions as $question) {
+		$resultQuestions[$question->id] = [
+			'id' => $question->id,
+			'name' => $question->text,
+		];
+	}
 
-    // find matching answers
-    $answers = executeSql(
-        '
+	// find matching answers
+	$answers = executeSql(
+		'
             SELECT
                 fq.Id AS id,
                 fq.Text AS text
@@ -379,27 +420,27 @@ $app->get('/questions/search/:searchQuery', function($searchQuery) use($app) {
             WHERE MATCH(fr.Text) AGAINST(:searchQuery)
             ORDER BY fq.Text ASC
         ',
-        ['searchQuery' => $searchQuery]
-    );
+		['searchQuery' => $searchQuery]
+	);
 
-    foreach($answers as $answer) {
-        if (!isset($resultQuestions[$answer->id])) {
-            $resultQuestions[$answer->id] = [
-                'id' => $answer->id,
-                'name' => $answer->text
-            ];
-        }
-    }
+	foreach ($answers as $answer) {
+		if (!isset($resultQuestions[$answer->id])) {
+			$resultQuestions[$answer->id] = [
+				'id' => $answer->id,
+				'name' => $answer->text,
+			];
+		}
+	}
 
-    $result = [
-        'questions' => array_values($resultQuestions),
-    ];
+	$result = [
+		'questions' => array_values($resultQuestions),
+	];
 
-    $app->response->headers->set('Content-Type', 'application/json');
-    $app->response->write(json_encode($result));
+	$app->response->headers->set('Content-Type', 'application/json');
+	$app->response->write(json_encode($result));
 });
 
-$app->get('/questions/:id/answers', function($id) use ($app) {
+$app->get('/questions/:id/answers', function ($id) use ($app) {
 	$answers = executeSql(
 		'
 			SELECT
@@ -416,7 +457,7 @@ $app->get('/questions/:id/answers', function($id) use ($app) {
 	foreach ($answers as $answer) {
 		$result[] = [
 			'id' => $answer->id,
-			'text' => $answer->text
+			'text' => $answer->text,
 		];
 	}
 

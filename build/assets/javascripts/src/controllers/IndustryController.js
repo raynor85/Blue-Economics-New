@@ -55,7 +55,6 @@ function IndustryController($state, blueEconomics) {
                 this.searchResults.push(currentIndustry);
             }
         }
-
     }
 
     /**

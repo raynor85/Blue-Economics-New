@@ -190,6 +190,19 @@ function blueEconomics($http, $q) {
         return request;
     };
 
+    function JobDetails() {
+        BaseQuery.call(this, '/job_details',{});
+    }
+
+    JobDetails.prototype = Object.create(BaseQuery.prototype);
+
+    JobDetails.prototype.getById = function(id) {
+
+        return this.get({}, {
+            id: id,
+            cached: false
+        });
+    };
 
     /**
      @description    GET /workexperience
@@ -325,6 +338,7 @@ function blueEconomics($http, $q) {
         this.occupations = new Occupations(args);
         this.questions = new Questions(args);
         this.workExperience = new WorkExperience(args);
+        this.jobDetails = new JobDetails(args);
 
         this.search = getDebouncedSearch(this);
     }

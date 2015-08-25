@@ -1,3 +1,5 @@
+"use strict";
+
 /**
  * Created by john on 6/28/15.
  */
@@ -7,8 +9,9 @@
  * @constructor
  * @ngInject
  */
-function QueryResultsController() {
-
+function QueryResultsController(jobs) {
+	this.job = jobs[0];
+	console.log(jobs);
 }
 
 module.exports = QueryResultsController;

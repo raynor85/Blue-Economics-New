@@ -25,8 +25,8 @@ webpackJsonp([0],[
 
 	'use strict';
 
-	var angular   = __webpack_require__(2);
-	var uiRouter  = __webpack_require__(4);
+	var angular = __webpack_require__(2);
+	var uiRouter = __webpack_require__(4);
 	var ngAnimate = __webpack_require__(5);
 
 
@@ -36,37 +36,47 @@ webpackJsonp([0],[
 	 * @param $urlRouterProvider
 	 */
 	function stateConfig($stateProvider, $urlRouterProvider) {
-	//
+	    //
 	    $stateProvider
 	        .state('home', {
-	            url         : '/',
-	            template    : __webpack_require__(7),
-	            controller  : 'HomeController',
+	            url: '/',
+	            template: __webpack_require__(7),
+	            controller: 'HomeController',
 	            controllerAs: 'vm'
 	        })
 	        .state('industry', {
-	            url         : '/industry',
-	            template    : __webpack_require__(8),
-	            controller  : 'IndustryController',
+	            url: '/industry',
+	            template: __webpack_require__(8),
+	            controller: 'IndustryController',
 	            controllerAs: 'vm'
 	        })
 	        .state('jobsByIndustry', {
-	            params      : { jobs: null },
-	            url         : '/jobsByIndustry',
-	            template    : __webpack_require__(9),
-	            controller  : 'JobsByIndustryController',
+	            params: {
+	                jobs: null
+	            },
+	            url: '/jobsByIndustry',
+	            template: __webpack_require__(9),
+	            controller: 'JobsByIndustryController',
 	            controllerAs: 'vm',
-	            resolve     : {
-	                'jobs': /**@ngInject*/["$stateParams", function ($stateParams) {
+	            resolve: {
+	                'jobs': /**@ngInject*/ ["$stateParams", function($stateParams) {
 	                    return $stateParams.jobs;
 	                }]
 	            }
 	        })
 	        .state('queryResults', {
-	            url         : '/results',
-	            template    : __webpack_require__(10),
-	            controller  : 'QueryResultsController',
-	            controllerAs: 'vm'
+	            params: {
+	                jobs: null
+	            },
+	            url: '/results',
+	            template: __webpack_require__(10),
+	            controller: 'QueryResultsController',
+	            controllerAs: 'vm',
+	            resolve: {
+	                'jobs': /**@ngInject*/ ["$stateParams", function($stateParams) {
+	                    return $stateParams.jobs;
+	                }]
+	            }
 	        });
 
 	    $urlRouterProvider.otherwise('/');
@@ -119,7 +129,7 @@ webpackJsonp([0],[
 /* 10 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class='section' id='section2' full-page>\n    <div class='slide' data-anchor='slideA' id='slide1'>\n        <div class='results'>\n            <div class='results-text'>\n                <h1>Job Title</h1>\n                <h4>\n                    <strong>\n                        Salary:\n                    </strong>\n                    65,950, Per Year\n                </h4>\n                <br>\n\n                <p>\n                    <strong>\n                        Also Called:\n                    </strong>\n                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat excepturi quam culpa recusan.\n                </p>\n                <br>\n\n                <p>\n                    <strong>\n                        What they do:\n                    </strong>\n                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis nihil natus facilis sed voluptatum\n                    impedit error laudantium fuga blanditiis, architecto? Sapiente possimus quas exercitationem\n                    cupiditate quod ad fugit nesciunt temporibus! Lorem ipsum dolor sit amet, consectetur adipisicing\n                    elit. Dolorem nemo assumenda debitis, eos animi, asperiores quas quod necessitatibus quis inventore\n                    reiciendis nulla quasi perferendis, et quibusdam\n                    aliquam. Facere, consequuntur, blanditiis.\n                </p>\n                <br>\n\n                <p>\n                    <strong>\n                        Education Required:\n                    </strong>\n                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.\n                </p>\n            </div>\n        </div>\n    </div>\n    <div class='slide' data-anchor='slideB' id='slide2'>\n        <div class='results'>\n            <div class='results-text'>\n                <h1>Job Title</h1>\n                <h4>\n                    <strong>\n                        Salary:\n                    </strong>\n                    65,950, Per Year\n                </h4>\n                <br>\n\n                <p>\n                    <strong>\n                        Also Called:\n                    </strong>\n                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat excepturi quam culpa recusan.\n                </p>\n                <br>\n\n                <p>\n                    <strong>\n                        What they do:\n                    </strong>\n                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis nihil natus facilis sed voluptatum\n                    impedit error laudantium fuga blanditiis, architecto? Sapiente possimus quas exercitationem\n                    cupiditate quod ad fugit nesciunt temporibus! Lorem ipsum dolor sit amet, consectetur adipisicing\n                    elit. Dolorem nemo assumenda debitis, eos animi, asperiores quas quod necessitatibus quis inventore\n                    reiciendis nulla quasi perferendis, et quibusdam aliquam. Facere, consequuntur, blanditiis.\n                </p>\n                <br>\n\n                <p>\n                    <strong>\n                        Education Required:\n                    </strong>\n                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.\n                </p>\n            </div>\n        </div>\n    </div>\n    <div id='search-icon'>\n        <a href='#secondPage'>\n            <i class='fa fa-search fa-4x'></i>\n        </a>\n    </div>\n</div>\n";
+	module.exports = "<div class='section' id='section2' full-page>\n    <div class='slide' data-anchor='slideA' id='slide1'>\n        <div class='results'>\n            <div class='results-text'>\n                <h1>{{vm.job.name}}</h1>\n                <h4>\n                    <strong>\n                        Salary:\n                    </strong>\n                    {{vm.job.annual_salary}}, Per Year\n                </h4>\n                <br>\n\n                <p>\n                    <strong>\n                        Industry:\n                    </strong>\n                    {{vm.job.industry}}\n                </p>\n                <br>\n\n                <p>\n                    <strong>\n                        What they do:\n                    </strong>\n                    {{vm.job.description}}\n                </p>\n                <br>\n\n                <p>\n                    <strong>\n                        Education Required:\n                    </strong>\n                    {{vm.job.education_level}}\n                </p>\n            </div>\n        </div>\n    </div>\n    <div id='search-icon'>\n        <a href='#secondPage'>\n            <i class='fa fa-search fa-4x'></i>\n        </a>\n    </div>\n</div>\n";
 
 /***/ },
 /* 11 */
@@ -205,7 +215,6 @@ webpackJsonp([0],[
 	                this.searchResults.push(currentIndustry);
 	            }
 	        }
-
 	    }
 
 	    /**
@@ -245,25 +254,36 @@ webpackJsonp([0],[
 	 * @constructor
 	 * @param {array} jobs - passed via state params
 	 */
-	function JobsByIndustryController($state,jobs) {
+	function JobsByIndustryController($state, jobs, blueEconomics) {
 
 	    this.jobs = jobs;
 	    this.selectJob = selectJob;
 
 	    function selectJob(job) {
-	    	console.log(job);
-	        $state.go('queryResults', {
-	            job: job
-	        });
+
+	        blueEconomics.jobDetails.getById(job.id)
+	            .then(function(data) {
+	                $state.go('queryResults', {
+	                    jobs: data
+	                });
+	            })
+	            .catch(function(err) {
+	                console.log(err);
+	            });
+
+
+
 	    }
 	}
-	JobsByIndustryController.$inject = ["$state", "jobs"];
+	JobsByIndustryController.$inject = ["$state", "jobs", "blueEconomics"];
 
 	module.exports = JobsByIndustryController;
 
 /***/ },
 /* 14 */
 /***/ function(module, exports) {
+
+	"use strict";
 
 	/**
 	 * Created by john on 6/28/15.
@@ -274,9 +294,11 @@ webpackJsonp([0],[
 	 * @constructor
 	 * @ngInject
 	 */
-	function QueryResultsController() {
-
+	function QueryResultsController(jobs) {
+		this.job = jobs[0];
+		console.log(jobs);
 	}
+	QueryResultsController.$inject = ["jobs"];
 
 	module.exports = QueryResultsController;
 
@@ -476,6 +498,19 @@ webpackJsonp([0],[
 	        return request;
 	    };
 
+	    function JobDetails() {
+	        BaseQuery.call(this, '/job_details',{});
+	    }
+
+	    JobDetails.prototype = Object.create(BaseQuery.prototype);
+
+	    JobDetails.prototype.getById = function(id) {
+
+	        return this.get({}, {
+	            id: id,
+	            cached: false
+	        });
+	    };
 
 	    /**
 	     @description    GET /workexperience
@@ -611,6 +646,7 @@ webpackJsonp([0],[
 	        this.occupations = new Occupations(args);
 	        this.questions = new Questions(args);
 	        this.workExperience = new WorkExperience(args);
+	        this.jobDetails = new JobDetails(args);
 
 	        this.search = getDebouncedSearch(this);
 	    }
