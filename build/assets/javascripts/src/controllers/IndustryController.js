@@ -15,11 +15,21 @@ function IndustryController($state, blueEconomics) {
 
     var self = this;
 
-    this.ask           = ask;
-    this.industry      = '';
+    this.ask = ask;
+    this.industry = '';
     this.getIndustries = getIndustries;
-    this.getJobs       = getJobs;
+    this.getJobs = getJobs;
     this.searchResults = [];
+
+    this.industries = [];
+
+
+    function fetchIndustries() {
+        blueEconomics.search(self.industry || '')
+            .then(function(data) {
+                self.industries = data.industries;
+            });
+    }
 
 
     /**
@@ -34,10 +44,17 @@ function IndustryController($state, blueEconomics) {
      * @param text
      */
     function getIndustries() {
-        blueEconomics.search(self.industry || '')
-            .then(function (data) {
-                self.searchResults = data.industries;
-            });
+        self.searchResults = [];
+
+        if (!self.industry || self.industry == null || self.industry == undefined)
+            return;
+
+        for (var i = 0; i < self.industries.length; i++) {
+            var currentIndustry = self.industries[i];
+            if (currentIndustry.name.toLowerCase().includes(self.industry.toLowerCase())) {
+                this.searchResults.push(currentIndustry);
+            }
+        }
     }
 
     /**
@@ -45,15 +62,18 @@ function IndustryController($state, blueEconomics) {
      * @param industry
      */
     function getJobs(industry) {
-        console.log(industry);
         blueEconomics.jobs.getByIndustry(industry)
-            .then(function (data) {
-                $state.go('jobsByIndustry', { jobs: data });
+            .then(function(data) {
+                $state.go('jobsByIndustry', {
+                    jobs: data
+                });
             })
-            .catch(function (err) {
+            .catch(function(err) {
                 console.log(err);
             });
     }
+
+    fetchIndustries();
 }
 
 module.exports = IndustryController;

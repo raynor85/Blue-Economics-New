@@ -4,8 +4,8 @@
 
 'use strict';
 
-var angular   = require('angular');
-var uiRouter  = require('angular-ui-router');
+var angular = require('angular');
+var uiRouter = require('angular-ui-router');
 var ngAnimate = require('angular-animate');
 
 
@@ -15,37 +15,47 @@ var ngAnimate = require('angular-animate');
  * @param $urlRouterProvider
  */
 function stateConfig($stateProvider, $urlRouterProvider) {
-
+    //
     $stateProvider
         .state('home', {
-            url         : '/',
-            template    : require('../../views/home.html'),
-            controller  : 'HomeController',
+            url: '/',
+            template: require('../../views/home.html'),
+            controller: 'HomeController',
             controllerAs: 'vm'
         })
         .state('industry', {
-            url         : '/industry',
-            template    : require('../../views/industry.html'),
-            controller  : 'IndustryController',
+            url: '/industry',
+            template: require('../../views/industry.html'),
+            controller: 'IndustryController',
             controllerAs: 'vm'
         })
         .state('jobsByIndustry', {
-            params      : { jobs: null },
-            url         : '/jobsByIndustry',
-            template    : require('../../views/jobsByIndustry.html'),
-            controller  : 'JobsByIndustryController',
+            params: {
+                jobs: null
+            },
+            url: '/jobsByIndustry',
+            template: require('../../views/jobsByIndustry.html'),
+            controller: 'JobsByIndustryController',
             controllerAs: 'vm',
-            resolve     : {
-                'jobs': /**@ngInject*/function ($stateParams) {
+            resolve: {
+                'jobs': /**@ngInject*/ function($stateParams) {
                     return $stateParams.jobs;
                 }
             }
         })
         .state('queryResults', {
-            url         : '/results',
-            template    : require('../../views/queryResults.html'),
-            controller  : 'QueryResultsController',
-            controllerAs: 'vm'
+            params: {
+                jobs: null
+            },
+            url: '/results',
+            template: require('../../views/queryResults.html'),
+            controller: 'QueryResultsController',
+            controllerAs: 'vm',
+            resolve: {
+                'jobs': /**@ngInject*/ function($stateParams) {
+                    return $stateParams.jobs;
+                }
+            }
         });
 
     $urlRouterProvider.otherwise('/');
