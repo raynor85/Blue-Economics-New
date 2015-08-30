@@ -10,7 +10,15 @@
  * @ngInject
  */
 function QueryResultsController(jobs) {
-	this.job = jobs[0];
+	this.job = getJob(jobs);
+
+
+	function getJob(jobData) {
+		if (jobData && jobData.length) {
+			return jobData[0];
+		}
+		return "No job was selected";
+	}
 }
 
 module.exports = QueryResultsController;

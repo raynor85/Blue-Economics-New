@@ -27,6 +27,7 @@ function JobsByIndustryController($state, jobs, blueEconomics) {
 
         blueEconomics.jobDetails.getById(job.id)
             .then(function(data) {
+            	console.log(data);
                 $state.go('queryResults', {
                     jobs: data
                 });
