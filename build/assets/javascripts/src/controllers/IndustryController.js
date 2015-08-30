@@ -46,13 +46,13 @@ function IndustryController($state, blueEconomics) {
     function getIndustries() {
         self.searchResults = [];
 
-        if (!self.industry || self.industry == null || self.industry == undefined)
+        if (!self.industry || !self.industries)
             return;
 
         for (var i = 0; i < self.industries.length; i++) {
             var currentIndustry = self.industries[i];
             if (currentIndustry.name.toLowerCase().includes(self.industry.toLowerCase())) {
-                this.searchResults.push(currentIndustry);
+                self.searchResults.push(currentIndustry);
             }
         }
     }
