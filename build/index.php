@@ -220,9 +220,9 @@ $app->get('/search/:searchQuery', function ($searchQuery) use ($app) {
 				Id AS id,
 				Name AS name
 			FROM industries
-
+			WHERE Name LIKE :searchQuery
 		',
-		['searchQuery' => $searchQuery]
+		['searchQuery' => str_replace(':', '', $searchQuery) . '%']
 	);
 
 	$resultIndustries = [];
