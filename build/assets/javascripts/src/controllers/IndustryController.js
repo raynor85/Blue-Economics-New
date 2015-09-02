@@ -24,14 +24,6 @@ function IndustryController($state, blueEconomics) {
     this.industries = [];
 
 
-    function fetchIndustries() {
-        blueEconomics.search(self.industry || '')
-            .then(function(data) {
-                self.industries = data.industries;
-            });
-    }
-
-
     /**
      * Asks a question
      */
@@ -44,16 +36,19 @@ function IndustryController($state, blueEconomics) {
      * @param text
      */
     function getIndustries() {
-        self.searchResults = [];
-
-        if (!self.industry || !self.industries)
-            return;
-
-        for (var i = 0; i < self.industries.length; i++) {
-            var currentIndustry = self.industries[i];
-            if (currentIndustry.name.toLowerCase().includes(self.industry.toLowerCase())) {
-                self.searchResults.push(currentIndustry);
-            }
+        var MIN_CHARS = 3;
+        var searchTerm = self.industry;
+        
+        if (searchTerm && searchTerm.length >= MIN_CHARS) {
+            blueEconomics.search(searchTerm || '')
+                .then(function(data) {
+                    self.searchResults = data.industries || [];
+                    console.log(self.searchResults);
+                })
+                .catch(function(err) {
+                    console.log('Error retrieving industries: ', err);
+                    self.searchResults = [];
+                });
         }
     }
 
@@ -73,7 +68,7 @@ function IndustryController($state, blueEconomics) {
             });
     }
 
-    fetchIndustries();
+    // fetchIndustries();
 }
 
 module.exports = IndustryController;
