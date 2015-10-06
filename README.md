@@ -43,6 +43,10 @@ The website read from the local database, which can be found inside /dump, so yo
 The database credential can be found in /build/config/dev/mysql.ini for development and /build/config/prod/mysql.ini
 for production (now we only care about development). It is better to keep those and adjust the MySQL to work with those.
 
+## RUN
+
+The project runs under gulp, so you have to install it in your project. https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md.
+After installed, you should locate the /build directory and generate the files running "gulp" command from the command line.
 
 ### FURTHER NOTES
 
