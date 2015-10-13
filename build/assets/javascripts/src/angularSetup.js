@@ -77,5 +77,6 @@ module.exports = function initAngular() {
         .controller('QueryResultsController', require('./controllers/QueryResultsController'))
         .factory('blueEconomics', require('./services/blueEconomics'))
         .directive('fullPage', require('./directives/fullPage'))
-        .directive('scaleDisplayList', require('./directives/scaleDisplayList'));
+        .directive('carouselList', require('./directives/carouselList'))
+        // .directive('scaleDisplayList', require('./directives/scaleDisplayList'));
 };

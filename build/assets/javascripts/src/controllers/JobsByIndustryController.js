@@ -9,11 +9,14 @@
  * @constructor
  * @param {array} jobs - passed via state params
  */
-function JobsByIndustryController($state, jobs, blueEconomics) {
+function JobsByIndustryController($state, $scope, $timeout, jobs, blueEconomics) {
 
     this.jobs = jobs;
     this.selectJob = selectJob;
-	this.getSalaryForJob = function() { return salaryForJob('Automotive Body and Glass Repairers'); };
+    $timeout(function() {
+        $scope.$broadcast('DATA_LOADED');
+    }, 100);
+	  this.getSalaryForJob = function() { return salaryForJob('Automotive Body and Glass Repairers'); };
 
 
     function salaryForJob(jobName) {

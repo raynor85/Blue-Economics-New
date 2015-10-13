@@ -11,7 +11,7 @@
  * @constructor
  * @ngInject
  */
-function IndustryController($state, blueEconomics) {
+function IndustryController($state, $scope, $timeout, blueEconomics) {
 
     var self = this;
 
@@ -38,11 +38,14 @@ function IndustryController($state, blueEconomics) {
     function getIndustries() {
         var MIN_CHARS = 3;
         var searchTerm = self.industry;
-        
+
         if (searchTerm && searchTerm.length >= MIN_CHARS) {
             blueEconomics.search(searchTerm || '')
                 .then(function(data) {
                     self.searchResults = data.industries || [];
+                    $timeout(function() {
+                        $scope.$broadcast('DATA_LOADED');
+                    }, 100);
                     console.log(self.searchResults);
                 })
                 .catch(function(err) {
