@@ -1,9 +1,11 @@
 <div class='section' id='section1' full-page>
-    <ul scale-display-list class="results-list" ng-if="vm.jobs.length > 0">
-        <li class="results-list-item" ng-click="vm.selectJob(result)"
+  <div class="parent-div" carousel-list>
+    <ul id="list" class="results-list" ng-if="vm.jobs.length > 0">
+        <li ng-click="vm.selectJob(result)"
             ng-repeat="result in vm.jobs track by result.id">
             {{result.name}}
         </li>
     </ul>
-    <button ng-click="vm.getSalaryForJob()">test</button>
+  </div>
+  <button ng-click="vm.getSalaryForJob()">test</button>
 </div>

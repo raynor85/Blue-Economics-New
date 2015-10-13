@@ -16,8 +16,9 @@
     "gulp-util": "^3.0.6",
     "jshint-stylish": "^2.0.0",
     "ng-annotate-webpack-plugin": "^0.1.2",
-    "sass-loader": "^1.0.2",
-    "style-loader": "^0.12.3"
+    "sass-loader": "~3.0.0",
+    "style-loader": "^0.12.3",
+    "node-sass": "~3.3.3"
   },
   "dependencies": {
     "angular": "^1.4.1",
