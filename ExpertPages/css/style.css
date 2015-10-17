@@ -1,0 +1,227 @@
+html {
+  box-sizing: border-box; }
+
+*, *::after, *::before {
+  box-sizing: inherit; }
+
+body {
+  display: table;
+  width: 100%; }
+
+.pageOrange {
+  display: table-cell;
+  color: #f6b6b7;
+  border-color: #f6b6b7;
+  vertical-align: middle;
+  height: 100vh;
+  background-color: #e62e30;
+  width: 100%;
+  font-weight: 100;
+  background: #e62e30; }
+
+ .pageBlue {
+  display: table-cell;
+  color: #B3E3FD;
+  border-color: #B3E3FD;
+  vertical-align: middle;
+  height: 100vh;
+  background-color: #2E9AFE;
+  width: 100%;
+  font-weight: 100; 
+ /* background: #2E9AFE;*/} 
+select::-ms-expand {
+    display: none; /* hide default arrow in IE10 */}
+
+.dropdown select{
+  -webkit-appearance: none; /*removes default chrome and safari style*/
+  -moz-appearance: none; /*removes default firefox style*/
+  appearance:none;
+
+  /*select::ms-expand{display: none;} /*removes ie default style*/
+  background:url("../images/arrow4.png") no-repeat; /*adds background image or arrow*/
+
+  
+  background-size: 5%;
+  background-position: 100%;
+  width: 100%;
+  text-indent: 0.01px; /*removes default arrow from firefox*/
+  text-overflow: "";/*removes default arrow from firefox*/
+
+}
+
+ .orange option{
+        background-color:#e62e30;
+        
+    }
+
+  .blue option{
+
+        background-color:#2E9AFE;
+        
+    }
+   
+
+.wrap {
+  max-width: 68em;
+  margin-left: auto;
+  margin-right: auto; }
+  .wrap::after {
+    clear: both;
+    content: "";
+    display: table; }
+
+h2 {
+  font-weight: 100;
+  text-align: center;
+  color: inherit;
+  font-size: 30px; }
+
+h3{
+  font-weight: 100;
+  text-align: center;
+  color: inherit;
+  }
+
+  ul.nav li{
+  text-align: center;
+  list-style-position: inside;
+  list-style-type: none;
+  
+  color: inherit;
+  background-color:inherit;
+  
+  
+  }
+  
+  
+.AnsButton {
+    position: relative;
+    text-align: center;
+    float: center;
+    
+    color: #f6b6b7;
+  border-color: #f6b6b7;
+  vertical-align: middle;
+  
+  background-color: #e62e30;
+      }
+
+.selected{
+  background-color:red;
+  }
+
+
+
+
+form {
+  width: auto;
+  padding: 0 10px;
+  max-width: 600px;
+  font-size: 20px;
+  margin: 0 auto; }
+  form span {
+    display: block;
+    padding: 20px 0 20px 10px; }
+  form textarea {
+    display: block;
+    width: 100%;
+    background-color: transparent;
+    border: 2px solid;
+    border-color: inherit;
+    min-height: 150px;
+    color: inherit;
+    font-weight: 100;
+    resize: none;
+    padding: 10px; 
+    color:inherit;}
+    form textarea::-webkit-input-placeholder {
+      color: inherit; 
+      background-color: transparent;}
+    form textarea::-moz-placeholder {
+      color: inherit; 
+      background-color: transparent;}
+    form textarea:-moz-placeholder {
+      color: inherit;
+      background-color: transparent; }
+    form textarea:-ms-placeholder {
+      color: inherit; 
+      background-color: transparent;}
+  form select, form input {
+
+    width: 100%;
+    background-color: inherit; ;
+    margin-top: 10px;
+    color: inherit;
+    border: 2px solid;
+    border-color: inherit; 
+    font-weight: 100; 
+    background: inherit;
+    list-style: inherit;}
+    form select::-webkit-select-placeholder {
+      color: inherit;
+      border-color: inherit;  
+      background-color: transparent;
+      /*background: inherit;*/}
+    form select::-moz-placeholder {
+      color: inherit; 
+      border-color: inherit; 
+      background-color: transparent;
+      /*background: inherit;*/}
+    form select:-moz-placeholder {
+      color: inherit; 
+      border-color: inherit; 
+      background-color: transparent;
+      /*background: inherit;*/}
+    form select:-ms-select-placeholder {
+      color: inherit; 
+      border-color: inherit; 
+      background: inherit;
+      background-color: transparent;
+      /*background: inherit;*/}
+  
+  form input {
+    padding-left: 10px;
+    border-color: inherit;
+    background-color: transparent; }
+    form input::-webkit-input-placeholder {
+      color: inherit;
+      border-color: inherit;  
+      background-color: transparent;}
+    form input::-moz-placeholder {
+      color: inherit; 
+      border-color: inherit; 
+      background-color: transparent;}
+    form input:-moz-placeholder {
+      color: inherit; 
+      border-color: inherit; 
+      background-color: transparent;}
+    form input:-ms-input-placeholder {
+      color: inherit; 
+      border-color: inherit; 
+      background-color: transparent;}
+  form a {
+    margin-top: 80px;
+    border: 2px solid;
+    border-color: inherit;
+    padding: 5px 20px;
+    display: inline-block;
+    color: inherit; }
+    form a:hover {
+      background-color: inherit;
+      color: inherit; }
+    /*  form button {
+    float: right;
+    margin-top: 80px;
+    color: inherit;
+    border-color: inherit;
+    background-color: transparent;
+    border: 2px solid;
+    font-weight: 100;
+    padding: 5px 20px;
+    border-radius: 5px; }
+    form button:hover {
+      background-color: transparent;
+      color: inherit; }*\
+  
+
+/*# sourceMappingURL=style.css.map */
