@@ -1,0 +1,22 @@
+<div role="main">
+  <div class="sidebars"><a href="#" class="arrow-right"></a></div>
+  <div class="content exAnswerPage4">
+    <section class="head">
+      <h1 class="question">What's Your Question?</h1>
+    </section>
+    <section class="textList">
+      <div id="carouselList" class="vertical-carousel">
+        <a href="#" class="scrollDown"></a>
+        <div class="vertical-carousel-container parent-div" carousel-list>
+          <ul id="list" class="results-list vertical-carousel-list" ng-if="vm.searchResults.length > 0">
+            <li ng-repeat="result in vm.searchResults track by result.id">
+                {{result.text}}
+            </li>
+          </ul>
+        </div>
+        <a href="#" class="scrollDown"></a>
+      </div>
+    </section>
+  </div> <!-- END of .content -->
+  <div class="sidebars"><a href="#" class="arrow-left"></a></div>
+</div> <!-- END of main -->
