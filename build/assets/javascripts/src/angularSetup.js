@@ -56,6 +56,30 @@ function stateConfig($stateProvider, $urlRouterProvider) {
                     return $stateParams.jobs;
                 }
             }
+        })
+        .state('viewQuestions', {
+            url: '/viewQuestions',
+            template: require('../../views/viewQuestions.html'),
+            controller: 'viewQuestionsController',
+            controllerAs: 'vm'
+        })
+        .state('askQuestion', {
+            url: '/askQuestion',
+            template: require('../../views/askQuestion.html'),
+            controller: 'askQuestionController',
+            controllerAs: 'vm'
+        })
+        .state('expertAnswerQuestion', {
+            url: '/expert/answerQuestion',
+            template: require('../../views/expertAnswerQuestion.html'),
+            controller: 'expertAnswerQuestionController',
+            controllerAs: 'vm'
+        })
+        .state('expertViewAnswers', {
+            url: '/expert/viewAnswers',
+            template: require('../../views/expertViewAnswers.html'),
+            controller: 'expertViewAnswersController',
+            controllerAs: 'vm'
         });
 
     $urlRouterProvider.otherwise('/');
@@ -75,6 +99,10 @@ module.exports = function initAngular() {
         .controller('IndustryController', require('./controllers/IndustryController'))
         .controller('JobsByIndustryController', require('./controllers/JobsByIndustryController'))
         .controller('QueryResultsController', require('./controllers/QueryResultsController'))
+        .controller('viewQuestionsController', require('./controllers/viewQuestionsController'))
+        .controller('askQuestionController', require('./controllers/askQuestionController'))
+        .controller('expertAnswerQuestionController', require('./controllers/expertAnswerQuestionController'))
+        .controller('expertViewAnswersController', require('./controllers/expertViewAnswersController'))
         .factory('blueEconomics', require('./services/blueEconomics'))
         .directive('fullPage', require('./directives/fullPage'))
         .directive('carouselList', require('./directives/carouselList'))
