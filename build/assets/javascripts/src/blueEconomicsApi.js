@@ -124,8 +124,7 @@ var blueEconomics = (function ($) {
     BaseQuery.prototype.filter = function (args) {
         args = args || {};
 
-        var cached         = !!args.cached,
-            filterText     = (args.text || '').toLowerCase(),
+        var filterText     = (args.text || '').toLowerCase(),
             deferred       = this.get(args),
             filterSelector = args.filterSelector || getFilterSelector;
 
@@ -276,7 +275,7 @@ var blueEconomics = (function ($) {
      @returns        {Function} - even if called multiple times in immediate succession, will only return the promise
      corresponding to the currently executing search.
      */
-    function getDebouncedSearch(self, duration) {
+    function getDebouncedSearch(self) {
 
         function search(query) {
             var url      = '/search/:' + query,

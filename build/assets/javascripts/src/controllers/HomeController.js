@@ -10,7 +10,7 @@
  * @constructor
  * @ngInject
  */
-function HomeController($scope) {
+function HomeController() {
 
 }
 

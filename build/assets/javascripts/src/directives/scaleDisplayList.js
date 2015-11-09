@@ -15,7 +15,7 @@ function scaleDisplayList() {
     return {
         restrict : 'A',
 
-        link : function (scope, elem, attrs) {
+        link : function (scope, elem) {
 
 
             angular.element(elem).on('mouseover', function (e) {
@@ -73,7 +73,7 @@ function scaleDisplayList() {
             });
 
         }
-    }
+    };
 }
 
 module.exports = scaleDisplayList;

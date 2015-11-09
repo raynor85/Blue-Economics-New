@@ -12,7 +12,7 @@ var $ = require('jquery');
  */
 function fullPageDirective() {
     return {
-        link: function (scope, elem, attrs) {
+        link: function (scope, elem) {
             $(elem).fullpage();
 
             scope.$on('$destroy', function() {

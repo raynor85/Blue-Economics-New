@@ -14,7 +14,7 @@ var angular = require('angular');
 function carouselList() {
     return {
         restrict : 'A',
-        link : function (scope, element, attrs) {
+        link : function (scope, element) {
             scope.$on('DATA_LOADED', function() {
                 var firstElement = angular.element("#list").children().first();
                 firstElement.addClass("center");

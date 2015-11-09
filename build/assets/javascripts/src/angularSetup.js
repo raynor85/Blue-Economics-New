@@ -105,6 +105,6 @@ module.exports = function initAngular() {
         .controller('expertViewAnswersController', require('./controllers/expertViewAnswersController'))
         .factory('blueEconomics', require('./services/blueEconomics'))
         .directive('fullPage', require('./directives/fullPage'))
-        .directive('carouselList', require('./directives/carouselList'))
+        .directive('carouselList', require('./directives/carouselList'));
         // .directive('scaleDisplayList', require('./directives/scaleDisplayList'));
 };

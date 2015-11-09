@@ -12,7 +12,7 @@ require('../scss/expertPages.scss');
  * @constructor
  * @ngInject
  */
-function expertViewAnswersController($scope) {
+function expertViewAnswersController() {
 
 }
 

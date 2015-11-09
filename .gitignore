@@ -6,3 +6,5 @@ node_modules
 *.log
 **/app.js
 **/vendor.bundle.js
+build/assets/javascripts/app.js
+build/assets/javascripts/vendor.bundle.js

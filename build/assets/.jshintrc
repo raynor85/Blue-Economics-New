@@ -4,5 +4,8 @@
   "globalstrict": true,
   "browserify": true,
   "globals": [
-  ]
+  ],
+  "devel": [{
+    "console": true
+  }]
 }

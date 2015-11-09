@@ -13,8 +13,8 @@ require('../scss/expertPages.scss');
  * @ngInject
  */
 function viewQuestionsController($scope, $timeout, blueEconomics) {
-    var self = this;
-    this.getQuestions = getQuestions;
+    var self = $scope;
+    self.getQuestions = getQuestions;
 
     /**
      * Get the list of questions from the server
@@ -34,7 +34,7 @@ function viewQuestionsController($scope, $timeout, blueEconomics) {
               });
     }
 
-    this.getQuestions();
+    self.getQuestions();
 }
 
 module.exports = viewQuestionsController;
